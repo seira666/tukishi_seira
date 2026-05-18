@@ -8,21 +8,34 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
  <style>
+  body{
+   background-image: url('images/seira_plofile.png'); /* PC用 */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .profile-main-logo {
+    display: block;
+    margin: 0 auto;
+    width: min(80vw, 400px);
+    height: auto;
+  }
+
+  @media screen and (max-width: 899px) {
     body {
-      background-image: url('images/seira_plofile.png');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
+      background-image: url('images/seira_plofile2.png'); /* スマホ用 */
+      background-size: cover;      /* 全画面にしたいなら cover */
+      background-position: center top;
+      background-attachment: scroll; /* スマホでは fixed より scroll の方が安定 */
     }
+
+    .profile-main-logo {
+      width: min(70vw, 260px);
+    }
+  }
+</style>
     
-    /* スクロールを確認するためのダミーの高さ */
-    .content {
-      height: 2000px;
-      color: white;
-      padding: 50px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
- </style>
 <body id="profile">
 
 <div id="container">
@@ -43,7 +56,9 @@
 
 <main>
 
-<h2><img src="images/ロゴ月汐星羅.png" alt="星羅🧸𖤐⡱" width="400" height="300" style="display: block; margin: 0 auto;"></h2>
+<h2>
+  <img src="images/ロゴ月汐星羅.png" alt="星羅🧸𖤐⡱" class="profile-main-logo">
+</h2>
 
 <section>
 
