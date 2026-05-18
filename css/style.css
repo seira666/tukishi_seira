@@ -620,3 +620,93 @@ footer small {
 .small {font-size: 0.75em;}
 .large {font-size: 2em; letter-spacing: 0.1em;}
 .block {display: block !important;}
+
+/* =========================
+   スマホ最適化
+========================= */
+@media screen and (max-width: 600px) {
+
+  /* 全体文字サイズ */
+  html, body {
+    font-size: 14px;
+  }
+
+  /* ヘッダー */
+  header {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-right: none;
+    border-bottom: var(--border);
+  }
+
+  /* hover時に広がらない */
+  header:hover,
+  header.is-open {
+    width: 100%;
+  }
+
+  /* ロゴ */
+  header #logo img {
+    max-width: 60px;
+  }
+
+  /* メニュー */
+  header nav ul {
+    display: flex;
+    border-bottom: none;
+  }
+
+  header nav ul li a {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  /* メイン余白 */
+  body:not(.home) main {
+    margin: 90px 15px 30px;
+  }
+
+  /* プロフィール画像 */
+  h2 img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+
+  /* テーブル */
+  .ta1 th,
+  .ta1 td {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  /* SNSアイコン */
+  .icons {
+    flex-direction: row;
+    right: 10px;
+    top: auto;
+    bottom: 10px;
+    gap: 10px;
+  }
+
+  /* コピーライト */
+  footer small {
+    writing-mode: horizontal-tb;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.7rem;
+  }
+
+  /* お知らせ */
+  .new-top {
+    left: 10px;
+    width: calc(100% - 20px);
+    bottom: 80px;
+    border-radius: 20px;
+  }
+
+}
