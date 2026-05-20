@@ -8,33 +8,47 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
  <style>
-    body{
-   background-image: url('images/seira_plofile.png'); /* PC用 */
-    background-attachment: fixed;
+
+/* =========================
+   PC背景
+========================= */
+body#profile {
+  background-image: url('images/seira_plofile.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ロゴ */
+.profile-main-logo {
+  display: block;
+  margin: 0 auto;
+  width: min(80vw, 400px);
+  height: auto;
+}
+
+
+/* =========================
+   スマホ背景
+========================= */
+@media screen and (max-width: 899px) {
+
+  body#profile {
+    background-image: url('images/seira_plifile2.png');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
   }
 
   .profile-main-logo {
-    display: block;
-    margin: 0 auto;
-    width: min(80vw, 400px);
-    height: auto;
+    width: min(70vw, 260px);
   }
 
-  @media screen and (max-width: 899px) {
-    body {
-      background-image: url('images/seira_plofile2.png'); /* スマホ用 */
-      background-size: cover;      /* 全画面にしたいなら cover */
-      background-position: center top;
-      background-attachment: scroll; /* スマホでは fixed より scroll の方が安定 */
-    }
+}
 
-    .profile-main-logo {
-      width: min(70vw, 260px);
-    }
-  }
  </style>
+
 <body id="profile">
 
 <div id="container">

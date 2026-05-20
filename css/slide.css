@@ -49,3 +49,48 @@
 
 	}/*追加指定ここまで*/
 
+
+	/* ======================================
+   PC動画
+====================================== */
+#mainimg .video-pc {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* スマホ動画は最初非表示 */
+#mainimg .video-sp {
+  display: none;
+}
+
+
+/* ======================================
+   スマホ専用動画
+====================================== */
+@media screen and (max-width: 600px) {
+
+  /* PC動画を消す */
+  #mainimg .video-pc {
+    display: none;
+  }
+
+  /* スマホ動画を表示 */
+  #mainimg .video-sp {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+
+    /* スマホ用の見え方調整 */
+    object-position: center center;
+  }
+
+  /* 動画全体 */
+  #mainimg {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+}
