@@ -84,7 +84,7 @@ body {
 	font-family: var(--base-font);	/*フォント指定。冒頭のvase-fontを読み込みます。*/
 	-webkit-text-size-adjust: none;
 	background: #3f6172;	/*背景色*/
-	color: #9370db;		/*文字色*/
+	color: #fff;		/*文字色*/
 	line-height: 2;		/*行間*/
 	overflow-x: hidden;
 }
@@ -256,9 +256,10 @@ header nav i {
 	flex: 1;
 	display: block;
 	background: rgba(120, 200, 255, 0.35);
+  backdrop-filter: blur(4px);
 	padding: 10px 18px;
 	border-radius: 999px;
-  color: #ffffff !important;	
+  color: #fff !important;	
   font-weight: bold;
 	min-width: 0;
 	white-space: nowrap;
