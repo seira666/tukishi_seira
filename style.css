@@ -787,3 +787,38 @@ footer small {
   }
 
 }
+
+/* ======================================
+   PORTFOLIO テキスト背景
+====================================== */
+
+/* h2 */
+#portfolio h2 {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+}
+
+/* p */
+#portfolio p {
+  display: inline-block;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+}
+
+/* h3 */
+#portfolio h3 {
+  display: inline-block;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  backdrop-filter: blur(3px);
+}
