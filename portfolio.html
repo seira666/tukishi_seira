@@ -8,6 +8,48 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* =========================
+   PORTFOLIO 背景
+========================= */
+
+/* PC用 */
+body#portfolio {
+  background-image: url('images/haikei_和.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+
+/* スマホ用 */
+@media screen and (max-width: 899px) {
+
+  body#portfolio {
+    background-image: url('images/和服seira.png');
+
+    /* 画像全部表示 */
+    background-size: contain;
+
+    background-color: #000;
+
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    /* iPhone対策 */
+    background-attachment: scroll;
+  }
+
+}
+
+</style>
+
+</head>
+
 <body id="portfolio">
 
 <div id="container">

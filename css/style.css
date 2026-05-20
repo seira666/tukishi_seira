@@ -711,3 +711,114 @@ footer small {
   }
 
 }
+
+/* ======================================
+   小型PC・タブレット最適化
+====================================== */
+@media screen and (max-width: 1100px) {
+
+  /* ヘッダー幅 */
+  header {
+    width: 70px;
+  }
+
+  /* hover時 */
+  header:hover,
+  header.is-open {
+    width: 180px;
+  }
+
+  /* メイン余白 */
+  body:not(.home) main {
+    margin: 60px 30px 60px 100px;
+  }
+
+  /* プロフィールロゴ */
+  .profile-main-logo {
+    width: min(60vw, 320px);
+  }
+
+  /* box */
+  .box1 {
+    padding: 1.2rem;
+  }
+
+  /* テーブル文字 */
+  .ta1 th,
+  .ta1 td {
+    font-size: 0.95rem;
+  }
+
+}
+
+
+/* ======================================
+   横幅900px以下
+====================================== */
+@media screen and (max-width: 900px) {
+
+  body:not(.home) main {
+    margin: 90px 20px 40px;
+  }
+
+  .box1 {
+    padding: 1rem;
+  }
+
+  .ta1 {
+    font-size: 0.9rem;
+  }
+
+  .profile-main-logo {
+    width: min(75vw, 260px);
+  }
+
+}
+/*↑ここで900px用メディアクエリ終了*/
+
+/* PROFILE背景画像調整 */
+@media screen and (max-width: 899px) {
+
+  body#profile {
+    background-size: contain;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
+
+}
+
+/* ======================================
+   PORTFOLIO テキスト背景
+====================================== */
+
+/* h2 */
+#portfolio h2 {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+}
+
+/* p */
+#portfolio p {
+  display: inline-block;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+}
+
+/* h3 */
+#portfolio h3 {
+  display: inline-block;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  backdrop-filter: blur(3px);
+}
