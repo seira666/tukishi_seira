@@ -736,6 +736,7 @@ footer small {
     width: calc(100% - 20px);
     bottom: 80px;
     border-radius: 20px;
+    color: #fff;
   }
 
 }
