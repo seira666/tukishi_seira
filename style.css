@@ -252,7 +252,28 @@ header nav i {
 /*テキストのブロック*/
 /*テキストのブロック*/
 .new-top .text {
+
 	flex: 1;
+
+	/* ↓追加 */
+	display: inline-block;
+
+	background: rgba(120, 200, 255, 0.35);
+
+	padding: 10px 18px;
+
+	border-radius: 999px;
+
+	color: #fff;
+
+	font-weight: bold;
+
+	/*以下4行は、末尾を...として１行にまとめる為のスタイル*/
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 	/*以下4行は、末尾を...として１行にまとめる為のスタイル*/
 	min-width: 0;
