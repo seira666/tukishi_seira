@@ -268,20 +268,23 @@ header nav i {
 }
 
 	/*以下4行は、末尾を...として１行にまとめる為のスタイル*/
-	min-width: 0;
+{
+  min-width: 0;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
 	/*以下4行は、末尾を...として１行にまとめる為のスタイル*/
-	min-width: 0;
+{
+  min-width: 0;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-
+}
 	/* ↓追加 */
-	background: rgba(120, 200, 255, 0.25);
+{
+  background: rgba(120, 200, 255, 0.25);
 	padding: 8px 16px;
 	border-radius: 100px;
 	backdrop-filter: blur(4px);
