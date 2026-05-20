@@ -166,6 +166,19 @@ header {
   background: var(--primary-color-rgba);  /*背景色。冒頭のprimary-color-rgbaを読み込みます*/
 }
 
+header nav ul li a {
+  overflow: hidden;
+}
+
+header nav ul li a span {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+header:hover nav ul li a span {
+  opacity: 1;
+}
+
 	/*画面の高さが400px以下の追加指定*/
 	@media (max-height: 400px) {
 
@@ -658,65 +671,106 @@ footer small {
 ========================= */
 @media screen and (max-width: 600px) {
 
-  /* 全体文字サイズ */
-  html, body {
-    font-size: 14px;
-  }
-
-  /* ヘッダー */
+  /* ヘッダー全体 */
   header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    flex-direction: row;
+    height: 70px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(8px);
+
+    display: flex;
     align-items: center;
-    padding: 10px;
+    justify-content: space-between;
+
+    padding: 0 15px;
+    z-index: 9999;
+
     border-right: none;
-    border-bottom: var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
   }
 
-  /* hover時に広がらない */
+  /* hover時 */
   header:hover,
   header.is-open {
     width: 100%;
   }
 
   /* ロゴ */
+  header #logo {
+    display: flex;
+    align-items: center;
+  }
+
   header #logo img {
-    max-width: 60px;
+    max-width: 55px;
+    height: auto;
   }
 
   /* メニュー */
   header nav ul {
     display: flex;
+    align-items: center;
+    gap: 10px;
     border-bottom: none;
   }
 
+  /* メニューリンク */
   header nav ul li a {
-    padding: 0 10px;
-    font-size: 12px;
-  }
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
-  /* メイン余白 */
-  body:not(.home) main {
-    margin: 90px 15px 30px;
-  }
-
-  /* プロフィール画像 */
-  h2 img {
-    width: 100%;
-    max-width: 250px;
     height: auto;
+    padding: 10px 14px;
+
+    border-top: none;
+
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+
+    color: #fff;
+    font-size: 12px;
+
+    transition: 0.3s;
   }
 
-  /* テーブル */
-  .ta1 th,
-  .ta1 td {
-    display: block;
-    width: 100%;
-    padding: 0.8rem;
+  /* hover */
+  header nav ul li a:hover {
+    background: #448db3;
+    transform: translateY(-2px);
   }
 
-  /* SNSアイコン */
+  /* アイコン */
+  header nav i {
+    min-width: auto;
+  }
+
+  /* main余白 */
+  main {
+    padding-top: 90px;
+  }
+
+  /* お知らせ */
+  .new-top {
+    left: 10px;
+    width: calc(100% - 20px);
+    bottom: 20px;
+
+    border-radius: 20px;
+
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+  }
+
+  .new-top .text {
+    color: #fff !important;
+    font-size: 13px;
+  }
+
+  /* SNS */
   .icons {
     flex-direction: row;
     right: 10px;
