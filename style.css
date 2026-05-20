@@ -232,9 +232,7 @@ header nav i {
   width: 100%;
 	display: flex;
   background: rgba(0,0,0,0.3);  /*背景色。0,0,0は黒のことで0.3は色が30%でた状態*/
-  padding: 0 0.8rem 0 1rem;  /*ブロック内の余白。上、右、下、左への順番。*/
-}
-
+  padding: 10px 15px;
 	/*画面幅700px以上の追加指定*/
 	@media (min-width:700px) {
 
