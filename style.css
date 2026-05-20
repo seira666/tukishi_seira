@@ -230,9 +230,13 @@ header nav i {
 	bottom: 40px;  /*画面の下から40pxの場所に配置*/
 	z-index: 1;
   width: 100%;
-	display: flex;
+  display: flex;
+  align-items: center;
+	gap: 10px;  
   background: rgba(0,0,0,0.3);  /*背景色。0,0,0は黒のことで0.3は色が30%でた状態*/
   padding: 10px 15px;
+  }
+
 	/*画面幅700px以上の追加指定*/
 	@media (min-width:700px) {
 
@@ -252,19 +256,17 @@ header nav i {
 .new-top .text {
 
 	flex: 1;
-
-	/* ↓追加 */
-	display: inline-block;
-
+	display: block;
 	background: rgba(120, 200, 255, 0.35);
-
 	padding: 10px 18px;
-
 	border-radius: 999px;
-
 	color: #fff;
-
 	font-weight: bold;
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 	/*以下4行は、末尾を...として１行にまとめる為のスタイル*/
 	min-width: 0;
@@ -833,8 +835,8 @@ footer small {
 /* p */
 #portfolio p {
   display: block;
-  width: fit-content;  b
-  ackground:rgba(0,0,0,0.45);
+  width: fit-content;  
+  background:rgba(0,0,0,0.45);
   color: #fff;
   padding: 0.8rem 1rem;
   border-radius: 10px;
