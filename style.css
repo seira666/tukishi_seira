@@ -250,15 +250,23 @@ header nav i {
 
 
 /*テキストのブロック*/
+/*テキストのブロック*/
 .new-top .text {
 	flex: 1;
+
 	/*以下4行は、末尾を...として１行にまとめる為のスタイル*/
 	min-width: 0;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
 
+	/* ↓追加 */
+	background: rgba(120, 200, 255, 0.25);
+	padding: 8px 16px;
+	border-radius: 100px;
+	backdrop-filter: blur(4px);
+	color: #fff;
+}
 /*ブロック右側にある「一覧」*/
 .new-top .more {
 	align-self: flex-end;
@@ -794,9 +802,10 @@ footer small {
 
 /* h2 */
 #portfolio h2 {
-  display: inline-block;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
+  display: block;
+  width: fit-content;  
+  background: rgba(251, 250, 250, 0.309);
+  color: #bd2ebd;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   backdrop-filter: blur(3px);
@@ -804,8 +813,9 @@ footer small {
 
 /* p */
 #portfolio p {
-  display: inline-block;
-  background: rgba(0,0,0,0.45);
+  display: block;
+  width: fit-content;  b
+  ackground:rgba(0,0,0,0.45);
   color: #fff;
   padding: 0.8rem 1rem;
   border-radius: 10px;
@@ -813,9 +823,10 @@ footer small {
 }
 
 /* h3 */
-#portfolio h3 {
-  display: inline-block;
-  background: rgba(0,0,0,0.55);
+#portfolio .grid-item h3 {
+  display: block;
+  width: fit-content;  
+  background: rgba(251, 250, 250, 0.309);
   color: #fff;
   padding: 0.4rem 0.8rem;
   border-radius: 8px;
