@@ -31,7 +31,7 @@
 	  
   --border: 1px solid rgba(255,255,255,0.5);  /*枠線の幅、線種、255,255,255は白のことで0.5は色が50%出た状態。*/
   
-  --header-size: 40px;  /*headerのサイズ*/
+  --header-size: 30px;  /*headerのサイズ*/
 
   --base-font: "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;  /*フォント指定*/
 }
@@ -170,13 +170,8 @@ header nav ul li a {
   overflow: hidden;
 }
 
-header nav ul li a span {
-  opacity: 0;
-  transition: 0.3s;
-}
-
-header:hover nav ul li a span {
-  opacity: 1;
+header nav ul li a {
+  overflow: visible;
 }
 
 	/*画面の高さが400px以下の追加指定*/
@@ -839,20 +834,13 @@ header nav ul {
     display: flex;
     align-items: center;
     gap: 5px;
-
-    padding: 10px 14px;
-
+    padding: 8px 10px;
     border-top: none;
-
     height: auto;
-
     background: rgba(255,255,255,0.1);
-
     border-radius: 999px;
-
     font-size: 12px;
     color: #fff;
-
     white-space: nowrap;
   }
 
