@@ -883,3 +883,42 @@ header nav ul {
     padding: 7px 9px;
   }
 }
+
+/* ======================================
+   スマホ用ヘッダー修正
+====================================== */
+@media screen and (max-width: 600px) {
+
+  /* メニュー文字を表示 */
+  header nav ul li a span,
+  header nav ul li a {
+    opacity: 1 !important;
+  }
+
+  /* スマホ時は横並び固定 */
+  header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  /* メニュー潰れ防止 */
+  header nav ul li {
+    display: block;
+  }
+
+  /* アイコン＋文字 */
+  header nav ul li a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    min-width: auto;
+    padding: 8px 10px;
+
+    font-size: 11px;
+  }
+
+}
