@@ -439,41 +439,53 @@ body#contact::before {
 
 
 /* ======================================
-   スマホSNS修正版
+   スマホSNSアイコン修正版
 ====================================== */
 @media screen and (max-width: 600px) {
 
+  /* ヘッダー高さ */
+  header {
+    height: 70px;
+    overflow: visible;
+  }
+
+  /* SNS全体 */
   .icons {
     position: fixed;
 
-    top: 82px;
-    right: 12px;
+    top: 78px;   /* ヘッダー直下 */
+    right: 14px;
 
     display: flex;
     flex-direction: column;
 
     gap: 10px;
 
-    z-index: 10000;
+    z-index: 9999;
+  }
+
+  /* li */
+  .icons li {
+    list-style: none;
   }
 
   /* 背景完全削除 */
-  .icons a,
-  .icons a:hover {
-    background: none !important;
-    background-color: transparent !important;
+  .icons a {
+    background: transparent !important;
     backdrop-filter: none !important;
 
-    width: auto !important;
-    height: auto !important;
-
     padding: 0 !important;
+    margin: 0 !important;
 
+    border: none !important;
     border-radius: 0 !important;
 
     box-shadow: none !important;
+  }
 
-    transform: scale(1.05);
+  /* hoverでも背景出さない */
+  .icons a:hover {
+    background: transparent !important;
   }
 
   /* アイコン */
@@ -482,12 +494,11 @@ body#contact::before {
     color: #fff;
 
     text-shadow:
-      0 0 10px rgba(0,0,0,0.8),
-      0 0 20px rgba(0,0,0,0.6);
+      0 0 8px rgba(0,0,0,0.7),
+      0 0 16px rgba(0,0,0,0.5);
   }
 
 }
-
 /*Copyright
 ---------------------------------------------------------------------------*/
 footer small {
