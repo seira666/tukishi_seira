@@ -40,7 +40,7 @@
 	@media (min-width:600px) {
 
   :root {
-    --header-size: 60px;  /*headerのサイズ*/
+    --header-size: 70px;  /*headerのサイズ*/
   }
 
 	}/*追加指定ここまで*/
@@ -812,6 +812,7 @@ header nav {
     display: flex;
     flex: 1;
     justify-content: flex-end;
+    margin-left: auto;
   }
 
   /* hover無効 */
@@ -827,14 +828,12 @@ header nav {
   }
 
   /* メニュー */
-  header nav ul {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    border-bottom: none;
-  }
-
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
   /* ボタン */
   header nav ul li a {
     display: flex;
