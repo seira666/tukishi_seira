@@ -31,7 +31,7 @@
 	  
   --border: 1px solid rgba(255,255,255,0.5);  /*枠線の幅、線種、255,255,255は白のことで0.5は色が50%出た状態。*/
   
-  --header-size: 30px;  /*headerのサイズ*/
+  --header-size: 20px;  /*headerのサイズ*/
 
   --base-font: "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;  /*フォント指定*/
 }
@@ -859,4 +859,27 @@ header nav ul {
     padding-top: 90px;
   }
 
+}
+@media screen and (max-width: 600px) {
+
+  header nav {
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  header nav ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  header nav ul li {
+    flex-shrink: 0;
+  }
+
+  header nav ul li a {
+    font-size: 11px;
+    padding: 7px 9px;
+  }
 }
