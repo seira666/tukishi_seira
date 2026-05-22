@@ -31,7 +31,7 @@
 	  
   --border: 1px solid rgba(255,255,255,0.5);  /*枠線の幅、線種、255,255,255は白のことで0.5は色が50%出た状態。*/
   
-  --header-size: 30px;  /*headerのサイズ*/
+  --header-size: 20px;  /*headerのサイズ*/
 
   --base-font: "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;  /*フォント指定*/
 }
@@ -87,6 +87,8 @@ body {
 	color: #fff;		/*文字色*/
 	line-height: 2;		/*行間*/
 	overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
 
 /*リセット*/
@@ -375,39 +377,127 @@ body:not(.home) main {
 
 /*プロフィール（profile.html）の背景画像*/
 body#profile::before {
-  --bg-image-url: url(../images/1.jpg);
+  --bg-image-url: url(../images/seira_plifile.png);
 }
 
 /*ポートフォリオ（portfolio.html）の背景画像*/
 body#portfolio::before {
-  --bg-image-url: url(../images/2.jpg);
+  --bg-image-url: url(../images/和服seira.png);
 }
 
 /*お問い合わせ（contact.html）の背景画像*/
 body#contact::before {
-  --bg-image-url: url(../images/3.jpg);
+  --bg-image-url: url(../images/haikei_和.png);
 }
 
 
-/*SNSアイコン
----------------------------------------------------------------------------*/
+/* ======================================
+   SNSアイコン固定
+====================================== */
+
 .icons {
-	list-style: none;
-	margin: 0;padding: 0;
-	display: flex;
-	flex-direction: column;  /*縦並び*/
-  text-align: center;
-	gap: 5px;  /*アイコン同士に空けるスペース*/
-  position: fixed;  /*アイコンを固定*/
-  right: 10px;  /*右からの配置場所*/
-  top: 10px;  /*上からの配置場所*/
-  text-shadow: 0px 0px 10px rgba(0,0,0,0.5);  /*アイコンが白なので、背景画像が白いと見えなくなるので少しだけ影を入れる*/
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  position: fixed;
+  top: 18px;
+  right: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  z-index: 10000;
 }
+
+/* アイコンリンク */
+.icons a {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+
+  color: #fff;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+/* hover */
+.icons a:hover {
+  transform: translateY(-2px);
+  background: rgba(68,141,179,0.8);
+}
+
+/* アイコンサイズ */
 .icons i {
-	font-size: 16px;	/*アイコンサイズ*/
+  font-size: 18px;
 }
 
+/* =========================
+   スマホ
+========================= */
+/* =========================
+   スマホSNS位置修正
+========================= */
+@media screen and (max-width: 600px) {
 
+  .icons {
+
+    position: fixed;
+
+    top: 82px;   /* ←ヘッダーの下へ */
+    right: 12px;
+
+    bottom: auto;
+
+    flex-direction: column;
+
+    z-index: 9998;
+
+    gap: 8px;
+  }
+
+  /* 背景削除 */
+  .icons a {
+    background: transparent;
+    backdrop-filter: none;
+
+    width: auto;
+    height: auto;
+
+    padding: 0;
+
+    border-radius: 0;
+
+    box-shadow: none;
+  }
+
+  /* hover */
+  .icons a:hover {
+    background: transparent;
+    transform: scale(1.08);
+  }
+
+  /* アイコンサイズ */
+  .icons i {
+    font-size: 20px;
+
+    text-shadow:
+      0 0 10px rgba(0,0,0,0.7),
+      0 0 20px rgba(0,0,0,0.5);
+  }
+
+}
+}
 /*Copyright
 ---------------------------------------------------------------------------*/
 footer small {
@@ -857,6 +947,68 @@ header nav ul {
   /* メイン余白 */
   main {
     padding-top: 90px;
+  }
+
+}
+@media screen and (max-width: 600px) {
+
+  header nav {
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  header nav ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  header nav ul li {
+    flex-shrink: 0;
+  }
+
+  header nav ul li a {
+    font-size: 11px;
+    padding: 7px 9px;
+  }
+}
+
+/* ======================================
+   スマホ用ヘッダー修正
+====================================== */
+@media screen and (max-width: 600px) {
+
+  /* メニュー文字を表示 */
+  header nav ul li a span,
+  header nav ul li a {
+    opacity: 1 !important;
+  }
+
+  /* スマホ時は横並び固定 */
+  header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  /* メニュー潰れ防止 */
+  header nav ul li {
+    display: block;
+  }
+
+  /* アイコン＋文字 */
+  header nav ul li a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    min-width: auto;
+    padding: 8px 10px;
+
+    font-size: 11px;
   }
 
 }
