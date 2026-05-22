@@ -665,148 +665,6 @@ footer small {
 .large {font-size: 2em; letter-spacing: 0.1em;}
 .block {display: block !important;}
 
-
-/* =========================
-   スマホ最適化
-========================= */
-@media screen and (max-width: 600px) {
-
-  /* ヘッダー全体 */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(8px);
-
-    display: flex;
-    align-items: center;
-
-    justify-content: space-between;
-    gap: 12px;
-
-    padding: 0 15px;
-    z-index: 9999;
-
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
-header nav {
-  width: 100%;
-}
-
-  /* hover時 */
-  header:hover,
-  header.is-open {
-    width: 100%;
-  }
-
-  /* ロゴ */
-  header #logo {
-    display: flex;
-    align-items: center;
-  }
-
-  header #logo img {
-    max-width: 55px;
-    height: auto;
-  }
-
-  /* メニュー */
-  header nav ul {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: none;
-  }
-
-  /* メニューリンク */
-  header nav ul li a {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-
-    height: auto;
-    padding: 10px 14px;
-
-    border-top: none;
-
-    background: rgba(255,255,255,0.08);
-    border-radius: 999px;
-
-    color: #fff;
-    font-size: 12px;
-
-    transition: 0.3s;
-  }
-
-  /* hover */
-  header nav ul li a:hover {
-    background: #448db3;
-    transform: translateY(-2px);
-  }
-
-  /* アイコン */
-  header nav i {
-    min-width: auto;
-  }
-
-  /* main余白 */
-  main {
-    padding-top: 90px;
-  }
-
-  /* お知らせ */
-  .new-top {
-    left: 10px;
-    width: calc(100% - 20px);
-    bottom: 20px;
-
-    border-radius: 20px;
-
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(8px);
-  }
-
-  .new-top .text {
-    color: #fff !important;
-    font-size: 13px;
-  }
-
-  /* SNS */
-  .icons {
-    flex-direction: row;
-    right: 10px;
-    top: auto;
-    bottom: 10px;
-    gap: 10px;
-  }
-
-  /* コピーライト */
-  footer small {
-    writing-mode: horizontal-tb;
-    bottom: 5px;
-    right: 10px;
-    font-size: 0.7rem;
-  }
-
-  /* お知らせ */
-  .new-top {
-    left: 10px;
-    width: calc(100% - 20px);
-    bottom: 80px;
-    border-radius: 20px;
-    color: #fff;
-  }
-
-}
-
 /* ======================================
    小型PC・タブレット最適化
 ====================================== */
@@ -919,4 +777,94 @@ header nav {
   border-radius: 8px;
   margin-bottom: 0.5rem;
   backdrop-filter: blur(3px);
+}
+
+/* ======================================
+   スマホ用ヘッダー
+====================================== */
+@media screen and (max-width: 600px) {
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+
+    z-index: 9999;
+  }
+
+  /* hover無効 */
+  header:hover,
+  header.is-open {
+    width: 100%;
+  }
+
+  /* ロゴ */
+  header #logo img {
+    max-width: 55px;
+    height: auto;
+  }
+
+  /* メニュー */
+  header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border-bottom: none;
+  }
+
+  /* ボタン */
+  header nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 10px 14px;
+
+    border-top: none;
+
+    height: auto;
+
+    background: rgba(255,255,255,0.1);
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    color: #fff;
+
+    white-space: nowrap;
+  }
+
+  /* hover */
+  header nav ul li a:hover {
+    background: #448db3;
+  }
+
+  /* アイコン */
+  header nav i {
+    min-width: auto;
+  }
+
+  /* メイン余白 */
+  main {
+    padding-top: 90px;
+  }
+
 }
