@@ -7,7 +7,73 @@
 <meta name="description" content="星羅の活動報告サイト🍀*.">
 <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
 
+/* ======================================
+   クリック不能 完全修正
+====================================== */
+
+/* 動画を完全背面 */
+#mainimg,
+#mainimg video{
+  pointer-events:none !important;
+  z-index:-9999 !important;
+}
+
+/* ページトップボタン無効化 */
+.pagetop{
+  pointer-events:none !important;
+}
+
+/* template-partyの著作表示を背面 */
+.pr{
+  position:relative;
+  z-index:1 !important;
+}
+
+/* メイン前面化 */
+main{
+  position:relative;
+  z-index:99999 !important;
+}
+
+/* SNS */
+.icons{
+  position:fixed !important;
+  z-index:999999 !important;
+  pointer-events:auto !important;
+}
+
+.icons li,
+.icons a,
+.icons i{
+  pointer-events:auto !important;
+}
+
+/* お知らせ */
+.new-top{
+  position:fixed !important;
+  z-index:999999 !important;
+  pointer-events:auto !important;
+}
+
+.new-top *{
+  pointer-events:auto !important;
+}
+
+/* Moreボタン */
+.new-top .more a{
+  display:inline-block !important;
+  position:relative !important;
+  z-index:999999 !important;
+}
+
+/* header */
+header{
+  z-index:999999 !important;
+}
+
+</style>
 <body class="home">
 
 <div id="container">
