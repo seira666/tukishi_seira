@@ -1,39 +1,22 @@
+# style.css 完成版（そのまま置き換え）
+
+```css
 @charset "utf-8";
 
-/* Font Awesome */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
-
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap');
-
-/* Fancybox */
 @import url("https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
-
-/* Slide CSS */
 @import url("slide.css");
 
-/* ======================================
-   基本設定
-====================================== */
-
-:root{
-  --primary-color:#448db3;
-  --primary-inverse-color:#fff;
-  --primary-color-rgba:rgba(68,141,179,0.5);
-
-  --border:1px solid rgba(255,255,255,0.4);
-
-  --base-font:
-  "ヒラギノ丸ゴ Pro",
-  "Hiragino Maru Gothic Pro",
-  "メイリオ",
-  Meiryo,
-  sans-serif;
+:root {
+  --primary-color: #448db3;
+  --primary-inverse-color: #fff;
+  --primary-color-rgba: rgba(68,141,179,0.5);
+  --border: 1px solid rgba(255,255,255,0.5);
+  --header-size: 70px;
 }
 
-*,
-*::before,
-*::after{
+*{
   box-sizing:border-box;
 }
 
@@ -41,224 +24,150 @@ html,
 body{
   margin:0;
   padding:0;
-
   width:100%;
   overflow-x:hidden;
-
-  font-family:var(--base-font);
-
+  font-family:"Hiragino Maru Gothic Pro","メイリオ",sans-serif;
   background:#000;
   color:#fff;
-
-  line-height:1.8;
-
-  -webkit-text-size-adjust:none;
 }
 
-img{
-  max-width:100%;
-  height:auto;
-  vertical-align:middle;
-}
-
-video{
-  max-width:100%;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-  transition:.3s;
-}
-
-a:hover{
-  opacity:.85;
-}
-
-/* ======================================
-   コンテナ
-====================================== */
-
-#container{
-  min-height:100vh;
-  position:relative;
-  z-index:1;
-}
-
-/* ======================================
-   HEADER
-====================================== */
-
-header{
-  position:fixed;
-
-  top:0;
-  left:0;
-
-  width:70px;
-  height:100vh;
-
-  background:rgba(80,120,180,.35);
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-
-  border-right:var(--border);
-
-  z-index:9999;
-
-  transition:.4s;
-
+body.home{
   overflow:hidden;
 }
 
-header:hover{
-  width:220px;
-}
-
-#logo{
-  margin:0;
-  padding:15px 0;
-
-  text-align:center;
-}
-
-#logo img{
-  width:55px;
-}
-
-/* NAV */
-
-header nav ul{
-  list-style:none;
-
-  margin:0;
-  padding:0;
-}
-
-header nav li a{
-  display:flex;
-  align-items:center;
-
-  gap:15px;
-
-  height:60px;
-
-  padding:0 22px;
-
-  white-space:nowrap;
-
-  border-top:var(--border);
-}
-
-header nav li a:hover{
-  background:rgba(255,255,255,.15);
-}
-
-header nav i{
-  width:25px;
-  text-align:center;
-}
-
-/* ======================================
-   MAIN
-====================================== */
-
-main{
-  position:relative;
-  z-index:2;
-}
-
-body:not(.home) main{
-  padding:
-  100px
-  30px
-  50px
-  120px;
-}
-
-/* ======================================
-   TOP動画
-====================================== */
+/* =====================================
+   動画背景
+===================================== */
 
 #mainimg{
   position:fixed;
-
   inset:0;
-
   width:100%;
   height:100vh;
-
   overflow:hidden;
-
-  z-index:-1;
-
+  z-index:-10;
   background:#000;
 }
 
 #mainimg video{
   position:absolute;
   inset:0;
-
   width:100%;
   height:100%;
-
   object-fit:cover;
-
   pointer-events:none;
+  background:#000;
 }
 
-/* PC動画 */
 .video-pc{
   display:block;
 }
 
-/* SP動画 */
 .video-sp{
   display:none;
 }
 
-/* ======================================
-   TOPお知らせ
-====================================== */
+/* =====================================
+   ヘッダー
+===================================== */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:90px;
+  height:100vh;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(10px);
+  z-index:9999;
+  border-right:1px solid rgba(255,255,255,0.2);
+}
+
+#logo{
+  text-align:center;
+  margin:15px 0;
+}
+
+#logo img{
+  max-width:65px;
+}
+
+header nav ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+header nav ul li a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  height:60px;
+  padding:0 20px;
+  color:#fff;
+  text-decoration:none;
+}
+
+header nav ul li a:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+/* =====================================
+   SNS
+===================================== */
+
+.icons{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:10000;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:0;
+  padding:0;
+}
+
+.icons a{
+  color:#fff;
+  font-size:24px;
+  text-shadow:0 0 10px rgba(0,0,0,0.8);
+}
+
+/* =====================================
+   TOP お知らせ
+===================================== */
 
 .new-top{
   position:fixed;
-
   left:50%;
   transform:translateX(-50%);
+  bottom:30px;
 
-  bottom:25px;
-
-  width:calc(100% - 40px);
-  max-width:900px;
+  width:min(900px, calc(100% - 40px));
 
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 
-  padding:12px 18px;
-
-  background:rgba(0,0,0,.45);
+  padding:14px 18px;
 
   border-radius:999px;
 
+  background:rgba(0,0,0,0.45);
   backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
 
-  z-index:999999;
+  z-index:20000;
 }
 
 .new-top .text{
   flex:1;
-
   margin:0;
-
+  font-weight:bold;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-
-  font-weight:bold;
 }
 
 .new-top .more{
@@ -267,68 +176,52 @@ body:not(.home) main{
 
 .new-top .more a{
   display:inline-block;
-
-  padding:8px 18px;
-
-  border-radius:999px;
-
+  text-decoration:none;
   background:#448db3;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:999px;
 }
 
-/* ======================================
-   SNS
-====================================== */
+/* =====================================
+   main
+===================================== */
 
-.icons{
-  list-style:none;
-
-  position:fixed;
-
-  top:15px;
-  right:15px;
-
-  margin:0;
-  padding:0;
-
-  display:flex;
-  flex-direction:column;
-
-  gap:12px;
-
-  z-index:10000;
+main{
+  position:relative;
+  z-index:5;
 }
 
-.icons a{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+body:not(.home) main{
+  padding:120px 30px 80px 120px;
 }
 
-.icons i{
-  font-size:22px;
-
-  text-shadow:
-  0 0 10px rgba(0,0,0,.8),
-  0 0 20px rgba(0,0,0,.5);
-}
-
-/* ======================================
-   BOX
-====================================== */
+/* =====================================
+   box
+===================================== */
 
 .box1{
-  background:rgba(0,0,0,.5);
-
-  padding:1.5rem 2rem;
-
-  border-radius:15px;
-
+  background:rgba(0,0,0,0.55);
+  border-radius:16px;
+  padding:25px;
   backdrop-filter:blur(6px);
 }
 
-/* ======================================
-   Masonry
-====================================== */
+/* =====================================
+   footer
+===================================== */
+
+footer small{
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  opacity:0.7;
+  z-index:10000;
+}
+
+/* =====================================
+   masonry
+===================================== */
 
 .masonry-grid{
   display:flex;
@@ -343,132 +236,62 @@ body:not(.home) main{
 .grid-item img,
 .grid-item video{
   width:100%;
-
-  border-radius:10px;
+  border-radius:12px;
 }
 
 .media-wrapper{
   position:relative;
-  overflow:hidden;
-
-  border-radius:10px;
 }
 
 .video-badge{
   position:absolute;
-
-  bottom:10px;
   right:10px;
-
+  bottom:10px;
+  background:red;
+  color:#fff;
   width:30px;
   height:30px;
-
   border-radius:50%;
-
-  background:red;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  font-size:12px;
 }
 
-/* ======================================
-   FOOTER
-====================================== */
+/* =====================================
+   PROFILE 背景
+===================================== */
 
-footer small{
-  position:fixed;
-
-  right:5px;
-  bottom:60px;
-
-  writing-mode:vertical-rl;
-
-  opacity:.6;
-
-  font-size:.75rem;
+body#profile{
+  background:url('../images/seira_plifile.png') center center / cover fixed no-repeat;
 }
 
-/* ======================================
+/* =====================================
+   PORTFOLIO 背景
+===================================== */
+
+body#portfolio{
+  background:url('../images/haikei_和.png') center center / cover fixed no-repeat;
+}
+
+/* =====================================
+   NEWS 背景
+===================================== */
+
+body#new{
+  background:url('../images/game_start.png') center center / cover fixed no-repeat;
+}
+
+/* =====================================
    スマホ
-====================================== */
+===================================== */
 
 @media screen and (max-width:600px){
 
-  /* HEADER */
-
-  header{
-    width:100%;
-    height:70px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 12px;
-
-    border-right:none;
-    border-bottom:var(--border);
-  }
-
-  header:hover{
-    width:100%;
-  }
-
-  #logo{
-    padding:0;
-  }
-
-  #logo img{
-    width:50px;
-  }
-
-  header nav{
-    flex:1;
-
-    display:flex;
-    justify-content:flex-end;
-  }
-
-  header nav ul{
-    display:flex;
-    align-items:center;
-
-    gap:6px;
-  }
-
-  header nav li a{
-    height:auto;
-
-    padding:8px 10px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:rgba(255,255,255,.12);
-
-    font-size:11px;
-  }
-
-  /* MAIN */
-
-  main{
-    padding-top:90px;
-  }
-
-  body:not(.home) main{
-    padding:
-    90px
-    15px
-    30px
-    15px;
+  body.home{
+    overflow:auto;
   }
 
   /* 動画 */
-
   #mainimg{
     height:100dvh;
   }
@@ -476,7 +299,6 @@ footer small{
   #mainimg video{
     width:100vw;
     height:100dvh;
-
     object-fit:cover;
   }
 
@@ -488,14 +310,68 @@ footer small{
     display:block;
   }
 
-  /* お知らせ */
+  /* ヘッダー */
+  header{
+    width:100%;
+    height:70px;
 
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 12px;
+
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+
+  #logo{
+    margin:0;
+  }
+
+  #logo img{
+    max-width:52px;
+  }
+
+  header nav ul{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  header nav ul li a{
+    height:auto;
+    padding:8px 10px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.08);
+    font-size:11px;
+    gap:5px;
+  }
+
+  /* SNS */
+  .icons{
+    top:82px;
+    right:12px;
+    gap:10px;
+  }
+
+  .icons a{
+    font-size:22px;
+  }
+
+  /* main */
+  body:not(.home) main{
+    padding:100px 16px 60px;
+  }
+
+  /* お知らせ */
   .new-top{
     bottom:15px;
-
     width:calc(100% - 20px);
-
-    padding:10px;
+    padding:10px 12px;
+    gap:8px;
+    border-radius:18px;
   }
 
   .new-top .text{
@@ -503,26 +379,45 @@ footer small{
   }
 
   .new-top .more a{
+    padding:8px 12px;
     font-size:11px;
-
-    padding:6px 12px;
   }
 
-  /* SNS */
-
-  .icons{
-    top:85px;
-    right:12px;
-  }
-
-  .icons i{
-    font-size:20px;
-  }
-
-  /* Masonry */
-
+  /* masonry */
   .grid-item{
     width:calc(50% - 8px);
+  }
+
+  /* iPhone 背景固定風 */
+  body#profile,
+  body#portfolio,
+  body#new{
+    background-attachment:scroll;
+    position:relative;
+  }
+
+  body#profile::before,
+  body#portfolio::before,
+  body#new::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-20;
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
+  }
+
+  body#profile::before{
+    background-image:url('../images/seira_plifile2.png');
+  }
+
+  body#portfolio::before{
+    background-image:url('../images/和服seira.png');
+  }
+
+  body#new::before{
+    background-image:url('../images/game_start.png');
   }
 
 }
