@@ -599,3 +599,94 @@ body#new{
   }
 
 }
+
+/* =========================================
+   リンク押せない問題 完全修正
+========================================= */
+
+/* 背景動画を完全背面 */
+#mainimg{
+  position: fixed !important;
+  inset: 0 !important;
+
+  z-index: -9999 !important;
+
+  pointer-events: none !important;
+}
+
+#mainimg video{
+  pointer-events: none !important;
+}
+
+/* メイン */
+main{
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* ヘッダー */
+header{
+  z-index: 5000 !important;
+}
+
+/* SNS */
+.icons{
+  position: fixed !important;
+
+  top: 20px !important;
+  right: 20px !important;
+
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
+
+.icons li{
+  position: relative !important;
+  z-index: 999999 !important;
+}
+
+.icons a{
+  position: relative !important;
+
+  display: flex !important;
+
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
+
+/* Moreお知らせ */
+.new-top{
+  position: fixed !important;
+
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
+
+.new-top *{
+  pointer-events: auto !important;
+}
+
+.new-top a{
+  position: relative !important;
+
+  z-index: 999999 !important;
+
+  display: inline-block !important;
+}
+
+/* スマホ */
+@media screen and (max-width:600px){
+
+  .icons{
+    top: 85px !important;
+    right: 12px !important;
+  }
+
+  .new-top{
+    bottom: 15px !important;
+  }
+
+}
