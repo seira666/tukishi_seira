@@ -16,8 +16,9 @@
 ---------------------------------------------------------------------------*/
 @import url("slide.css");
 
-/*CSSカスタムプロパティ
----------------------------------------------------------------------------*/
+/* ======================================
+   CSS変数
+====================================== */
 :root {
 
   --primary-color: #448db3;
@@ -39,842 +40,731 @@
     sans-serif;
 }
 
-/* 600px以上 */
-@media (min-width:600px) {
+@media (min-width:600px){
 
-  :root {
-    --header-size: 70px;
+  :root{
+    --header-size:70px;
   }
 
 }
 
-/*animation
----------------------------------------------------------------------------*/
+/* ======================================
+   animation
+====================================== */
 @keyframes animation1 {
-  0% { left: -200px; }
-  100% { left: 0px; }
+  0% { left:-200px; }
+  100% { left:0; }
 }
 
 @keyframes opa1 {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity:0; }
+  100% { opacity:1; }
 }
 
-/*全体
----------------------------------------------------------------------------*/
+/* ======================================
+   基本
+====================================== */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
+*::after{
+  box-sizing:border-box;
 }
 
 html,
-body {
-  font-size: 12px;
-  width: 100%;
-  overflow-x: hidden;
+body{
+  width:100%;
+  overflow-x:hidden;
+  font-size:12px;
 }
 
-@media (min-width:900px) {
+@media (min-width:900px){
 
   html,
-  body {
-    font-size: 15px;
+  body{
+    font-size:15px;
   }
 
 }
 
-body {
-  margin: 0;
-  padding: 0;
+body{
+  margin:0;
+  padding:0;
 
-  font-family: var(--base-font);
+  font-family:var(--base-font);
 
-  -webkit-text-size-adjust: none;
+  -webkit-text-size-adjust:none;
 
-  background: #3f6172;
-  color: #fff;
+  background:#3f6172;
+  color:#fff;
 
-  line-height: 2;
+  line-height:2;
 
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-x:hidden;
+  overflow-y:auto;
 
-  position: relative;
+  position:relative;
 }
 
-/*リセット*/
-figure { margin: 0; }
-dd { margin: 0; }
-nav, ul, li, ol {
-  margin: 0;
-  padding: 0;
+/* reset */
+figure{margin:0;}
+dd{margin:0;}
+
+nav,
+ul,
+li,
+ol{
+  margin:0;
+  padding:0;
 }
 
-nav ul {
-  list-style: none;
+nav ul{
+  list-style:none;
 }
 
-table {
-  border-collapse: collapse;
+table{
+  border-collapse:collapse;
 }
 
-img {
-  border: none;
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
+img{
+  border:none;
+  max-width:100%;
+  height:auto;
+  vertical-align:middle;
 }
 
-video {
-  max-width: 100%;
+video{
+  max-width:100%;
 }
 
-iframe {
-  width: 100%;
+iframe{
+  width:100%;
 }
 
-input {
-  font-size: 1rem;
+input{
+  font-size:1rem;
 }
 
 section > ol,
-section > ul {
-  margin-left: 2rem;
+section > ul{
+  margin-left:2rem;
 }
 
-section:not(:first-child) {
-  margin-top: 4rem;
+section:not(:first-child){
+  margin-top:4rem;
 }
 
-/*リンク
----------------------------------------------------------------------------*/
-a {
-  color: inherit;
-  transition: 0.3s;
+/* ======================================
+   link
+====================================== */
+a{
+  color:inherit;
+  transition:0.3s;
 }
 
-a:hover {
-  filter: brightness(1.1);
-  text-decoration: none;
+a:hover{
+  filter:brightness(1.1);
+  text-decoration:none;
 }
 
-/*フォント
----------------------------------------------------------------------------*/
+/* ======================================
+   font
+====================================== */
 nav,
-h2 {
-  font-family: "Jost", var(--base-font);
-  letter-spacing: 0.15em;
-  font-weight: normal;
+h2{
+  font-family:"Jost", var(--base-font);
+  letter-spacing:0.15em;
+  font-weight:normal;
 }
 
-/*container
----------------------------------------------------------------------------*/
-#container {
-  display: grid;
-  grid-template-rows: auto 1fr;
+/* ======================================
+   container
+====================================== */
+#container{
+  display:grid;
+  grid-template-rows:auto 1fr;
 
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height:100vh;
+  min-height:100dvh;
 }
 
-/*ヘッダー
----------------------------------------------------------------------------*/
-header {
-  position: fixed;
+/* ======================================
+   header PC
+====================================== */
+header{
+  position:fixed;
 
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
 
-  width: var(--header-size);
+  width:var(--header-size);
 
-  overflow: hidden;
+  overflow:hidden;
 
-  transition: width 0.6s ease;
+  transition:width 0.6s ease;
 
-  z-index: 1000;
+  z-index:9999;
 
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 
-  border-right: var(--border);
+  border-right:var(--border);
 
-  background: var(--primary-color-rgba);
-}
-
-header nav ul li a {
-  overflow: visible;
-}
-
-@media (max-height:400px) {
-
-  header {
-    position: absolute;
-  }
-
+  background:var(--primary-color-rgba);
 }
 
 header:hover,
-header.is-open {
-  width: 200px;
+header.is-open{
+  width:200px;
 }
 
-/*ロゴ*/
-header #logo {
-  margin: 0;
+header #logo{
+  margin:0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-header #logo img {
-  max-width: 80px;
+header #logo img{
+  max-width:80px;
 }
 
-/*メニュー
----------------------------------------------------------------------------*/
-header nav ul {
-  border-bottom: var(--border);
+header nav ul{
+  border-bottom:var(--border);
 }
 
-header nav ul li a {
-  display: flex;
-  align-items: center;
+header nav ul li a{
+  display:flex;
+  align-items:center;
 
-  height: var(--header-size);
+  height:var(--header-size);
 
-  border-top: var(--border);
+  border-top:var(--border);
 
-  color: var(--primary-inverse-color);
+  color:var(--primary-inverse-color);
 
-  text-decoration: none;
+  text-decoration:none;
 
-  white-space: nowrap;
+  white-space:nowrap;
 }
 
-header nav ul li a:hover {
-  background: var(--primary-color);
+header nav ul li a:hover{
+  background:var(--primary-color);
 }
 
-header nav i {
-  min-width: var(--header-size);
-  text-align: center;
+header nav i{
+  min-width:var(--header-size);
+  text-align:center;
 }
 
-/*トップお知らせ
----------------------------------------------------------------------------*/
-.new-top {
-  position: absolute;
+/* ======================================
+   TOP動画
+====================================== */
+#mainimg{
+  position:fixed;
+  inset:0;
 
-  left: 0;
-  bottom: 40px;
+  width:100%;
+  height:100vh;
+  height:100dvh;
 
-  z-index: 1;
+  overflow:hidden;
 
-  width: 100%;
+  z-index:-1;
 
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  background: rgba(0,0,0,0.3);
-
-  padding: 10px 15px;
+  background:#000;
 }
 
-@media (min-width:700px) {
+#mainimg video{
+  position:absolute;
+  inset:0;
 
-  .new-top {
-    bottom: 100px;
-    left: 100px;
+  width:100%;
+  height:100%;
 
-    width: calc(100% - 200px);
+  object-fit:cover;
 
-    border-radius: 100px;
+  pointer-events:none;
 
-    padding: 0 1.2rem 0 2rem;
+  background:#000;
+}
+
+/* PC動画 */
+.video-pc{
+  display:block;
+}
+
+/* SP動画 */
+.video-sp{
+  display:none;
+}
+
+/* ======================================
+   TOPお知らせ
+====================================== */
+.new-top{
+  position:fixed;
+
+  left:50%;
+  transform:translateX(-50%);
+
+  bottom:25px;
+
+  z-index:20000;
+
+  width:calc(100% - 40px);
+  max-width:900px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  background:rgba(0,0,0,0.35);
+
+  padding:10px 15px;
+
+  border-radius:999px;
+
+  backdrop-filter:blur(6px);
+}
+
+.new-top .text{
+  flex:1;
+
+  display:block;
+
+  min-width:0;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+
+  background:rgba(120,200,255,0.25);
+
+  padding:10px 18px;
+
+  border-radius:999px;
+
+  backdrop-filter:blur(4px);
+
+  color:#fff !important;
+
+  font-weight:bold;
+}
+
+.new-top .more{
+  flex-shrink:0;
+}
+
+.new-top .more a{
+  display:block;
+
+  text-decoration:none;
+
+  background:var(--primary-color);
+
+  color:var(--primary-inverse-color);
+
+  border-radius:999px;
+
+  padding:8px 16px;
+}
+
+.new-top .more a:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* ======================================
+   main
+====================================== */
+body:not(.home) main{
+  margin:20px 30px 20px 60px;
+}
+
+@media (min-width:700px){
+
+  body:not(.home) main{
+    margin:70px 60px 70px 100px;
   }
 
 }
 
-/*テキスト*/
-.new-top .text {
+@media (min-width:1000px){
 
-  flex: 1;
-
-  display: block;
-
-  min-width: 0;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  background: rgba(120, 200, 255, 0.25);
-
-  padding: 10px 18px;
-
-  border-radius: 999px;
-
-  backdrop-filter: blur(4px);
-
-  color: #fff !important;
-
-  font-weight: bold;
-}
-
-/*一覧ボタン*/
-.new-top .more {
-  align-self: flex-end;
-}
-
-.new-top .more a {
-  display: block;
-
-  text-decoration: none;
-
-  background: var(--primary-color);
-
-  color: var(--primary-inverse-color);
-
-  border-radius: 100px;
-
-  padding: 0 1rem;
-}
-
-.new-top .more a:hover {
-  background: #fff;
-  color: #000;
-}
-
-/*main
----------------------------------------------------------------------------*/
-body:not(.home) main {
-  margin: 20px 30px 20px 60px;
-}
-
-@media (min-width:700px) {
-
-  body:not(.home) main {
-    margin: 70px 60px 70px 100px;
+  body:not(.home) main{
+    margin:100px 100px 100px 150px;
   }
 
 }
 
-@media (min-width:1000px) {
+/* ======================================
+   SNS
+====================================== */
+.icons{
+  list-style:none;
 
-  body:not(.home) main {
-    margin: 100px 100px 100px 150px;
-  }
+  margin:0;
+  padding:0;
 
+  position:fixed;
+
+  top:15px;
+  right:15px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+
+  z-index:10000;
 }
 
-/*背景画像
----------------------------------------------------------------------------*/
-body#profile::before {
-  --bg-image-url: url(../images/seira_plifile.png);
+.icons a{
+  color:#fff;
+
+  text-decoration:none;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:0.3s;
 }
 
-body#portfolio::before {
-  --bg-image-url: url(../images/和服seira.png);
+.icons a:hover{
+  transform:scale(1.1);
 }
 
-body#contact::before {
-  --bg-image-url: url(../images/haikei_和.png);
-}
-
-/*SNS
----------------------------------------------------------------------------*/
-.icons {
-  list-style: none;
-
-  margin: 0;
-  padding: 0;
-
-  position: fixed;
-
-  top: 15px;
-  right: 15px;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 10px;
-
-  z-index: 10000;
-}
-
-.icons a {
-  color: #fff;
-
-  text-decoration: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: 0.3s;
-}
-
-.icons a:hover {
-  transform: scale(1.1);
-}
-
-.icons i {
-  font-size: 20px;
+.icons i{
+  font-size:20px;
 
   text-shadow:
     0 0 10px rgba(0,0,0,0.7),
     0 0 20px rgba(0,0,0,0.5);
 }
 
-/*Copyright
----------------------------------------------------------------------------*/
-footer small {
-  display: block;
+/* ======================================
+   box
+====================================== */
+.box1{
+  background:rgba(0,0,0,0.5);
 
-  position: fixed;
+  color:#fff;
 
-  right: 5px;
-  bottom: 60px;
+  padding:1rem 2rem;
 
-  writing-mode: vertical-lr;
-
-  opacity: 0.5;
-
-  letter-spacing: 0.2em;
-
-  font-size: 0.8rem;
+  border-radius:10px;
 }
 
-@media (max-height:400px) {
-
-  footer small {
-    position: static;
-
-    writing-mode: horizontal-tb;
-
-    text-align: center;
-  }
-
-}
-
-/*Masonry
----------------------------------------------------------------------------*/
-.masonry-grid {
-  animation: opa1 0.2s 0.4s both;
+/* ======================================
+   masonry
+====================================== */
+.masonry-grid{
+  animation:opa1 0.2s 0.4s both;
 }
 
 .grid-sizer,
-.grid-item {
-  width: calc(25% - 16px);
+.grid-item{
+  width:calc(25% - 16px);
 }
 
-.grid-item {
-  margin-bottom: 16px;
+.grid-item{
+  margin-bottom:16px;
 }
 
-@media (max-width:1000px) {
+@media (max-width:1000px){
 
   .grid-sizer,
-  .grid-item {
-    width: calc(33.333% - 16px);
+  .grid-item{
+    width:calc(33.333% - 16px);
   }
 
 }
 
-@media (max-width:500px) {
+@media (max-width:500px){
 
   .grid-sizer,
-  .grid-item {
-    width: calc(50% - 16px);
+  .grid-item{
+    width:calc(50% - 16px);
   }
 
 }
 
-.grid-item a {
-  display: block;
+.grid-item a{
+  display:block;
 
-  text-decoration: none;
+  text-decoration:none;
 
-  color: inherit;
+  color:inherit;
 }
 
 .grid-item img,
-.grid-item video {
-  display: block;
+.grid-item video{
+  display:block;
 
-  width: 100%;
-  height: auto;
+  width:100%;
+  height:auto;
 
-  border-radius: 8px;
+  border-radius:8px;
 }
 
-.grid-item img,
-.media-wrapper {
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+.media-wrapper{
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:8px;
 }
 
-.grid-item a:hover img,
-.grid-item a:hover .media-wrapper {
-  transform: translateY(-2px);
+.thumb-video{
+  display:block;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width:100%;
+  height:auto;
 }
 
-.media-wrapper {
-  position: relative;
+.video-badge{
+  position:absolute;
 
-  overflow: hidden;
+  bottom:10px;
+  right:10px;
 
-  border-radius: 8px;
+  background:#ff0000;
+  color:#fff;
+
+  font-size:12px;
+
+  width:28px;
+  line-height:28px;
+
+  text-align:center;
+
+  border-radius:100px;
+
+  pointer-events:none;
 }
 
-.thumb-video {
-  display: block;
+/* ======================================
+   copyright
+====================================== */
+footer small{
+  display:block;
 
-  width: 100%;
-  height: auto;
+  position:fixed;
+
+  right:5px;
+  bottom:60px;
+
+  writing-mode:vertical-lr;
+
+  opacity:0.5;
+
+  letter-spacing:0.2em;
+
+  font-size:0.8rem;
 }
 
-.video-badge {
-  position: absolute;
+/* ======================================
+   スマホ
+====================================== */
+@media screen and (max-width:600px){
 
-  bottom: 10px;
-  right: 10px;
+  /* header */
+  header{
+    width:100%;
+    max-width:100vw;
 
-  background: #ff0000;
-  color: #fff;
+    height:70px;
 
-  font-size: 12px;
+    flex-direction:row;
 
-  width: 28px;
-  line-height: 28px;
+    align-items:center;
+    justify-content:space-between;
 
-  text-align: center;
+    padding:0 15px;
 
-  border-radius: 100px;
+    background:rgba(117,163,248,0.28);
 
-  pointer-events: none;
-}
+    backdrop-filter:blur(10px);
 
-/*box
----------------------------------------------------------------------------*/
-.box1 {
-  background: rgba(0,0,0,0.5);
+    border-right:none;
 
-  color: #fff;
-
-  padding: 1rem 2rem;
-
-  border-radius: 10px;
-}
-
-/*button
----------------------------------------------------------------------------*/
-.btn {
-  -webkit-appearance: none;
-  appearance: none;
-
-  border: none;
-
-  cursor: pointer;
-
-  background: var(--primary-color);
-
-  color: var(--primary-inverse-color);
-
-  padding: 1rem 2rem;
-
-  border-radius: 5px;
-
-  transition: 0.3s;
-}
-
-.btn:hover {
-  filter: brightness(1.2);
-}
-
-/*スマホ
----------------------------------------------------------------------------*/
-@media screen and (max-width:600px) {
-
-  header {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    max-width: 100vw;
-
-    height: 70px;
-
-    display: flex;
-    flex-direction: row;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 15px;
-
-    background: rgba(117,163,248,0.277);
-
-    backdrop-filter: blur(10px);
-
-    border-right: none;
-
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-
-    z-index: 9999;
-
-    box-sizing: border-box;
+    border-bottom:1px solid rgba(255,255,255,0.2);
   }
 
   header:hover,
-  header.is-open {
-    width: 100%;
+  header.is-open{
+    width:100%;
   }
 
-  header #logo img {
-    max-width: 55px;
-    height: auto;
+  header #logo img{
+    max-width:55px;
   }
 
-  header nav {
-    display: flex;
+  header nav{
+    display:flex;
 
-    flex: 1;
+    flex:1;
 
-    justify-content: flex-end;
+    justify-content:flex-end;
 
-    margin-left: auto;
+    margin-left:auto;
 
-    min-width: 0;
+    min-width:0;
 
-    overflow: hidden;
+    overflow:hidden;
   }
 
-  header nav ul {
-    display: flex !important;
+  header nav ul{
+    display:flex !important;
 
-    flex-direction: row !important;
+    flex-direction:row !important;
 
-    justify-content: flex-end;
+    align-items:center;
 
-    align-items: center;
+    gap:6px;
 
-    flex-wrap: nowrap;
-
-    gap: 6px;
-
-    width: auto;
-
-    min-width: 0;
+    border-bottom:none;
   }
 
-  header nav ul li {
-    display: block;
-    flex-shrink: 0;
+  header nav ul li{
+    flex-shrink:0;
   }
 
-  header nav ul li a {
-    display: flex !important;
+  header nav ul li a{
+    display:flex !important;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    gap: 5px;
+    gap:5px;
 
-    min-width: auto;
+    padding:8px 10px;
 
-    padding: 8px 10px;
+    border-top:none;
 
-    border-top: none;
+    height:auto;
 
-    height: auto;
+    background:rgba(255,255,255,0.1);
 
-    background: rgba(255,255,255,0.1);
+    border-radius:999px;
 
-    border-radius: 999px;
-
-    font-size: 11px;
-
-    color: #fff;
-
-    white-space: nowrap;
-
-    opacity: 1 !important;
+    font-size:11px;
   }
 
-  header nav ul li a:hover {
-    background: #448db3;
+  header nav i{
+    min-width:auto;
   }
 
-  header nav i {
-    min-width: auto;
-  }
-
-  main {
-    padding-top: 90px;
+  /* main */
+  main{
+    padding-top:90px;
   }
 
   /* SNS */
-  .icons {
-    position: fixed !important;
+  .icons{
+    top:88px !important;
+    right:12px !important;
 
-    top: 88px !important;
-    right: 12px !important;
-
-    bottom: auto !important;
-    left: auto !important;
-
-    display: flex !important;
-
-    flex-direction: column !important;
-
-    gap: 10px !important;
-
-    z-index: 9999 !important;
+    gap:10px !important;
   }
 
-  .icons li {
-    list-style: none;
+  .icons a{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+
+    padding:0 !important;
+    margin:0 !important;
   }
 
-  .icons a {
-    display: flex !important;
-
-    align-items: center;
-    justify-content: center;
-
-    background: transparent !important;
-    background-color: transparent !important;
-
-    backdrop-filter: none !important;
-
-    border: none !important;
-
-    box-shadow: none !important;
-
-    width: auto !important;
-    height: auto !important;
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    border-radius: 0 !important;
-  }
-
-  .icons a:hover {
-    background: transparent !important;
-    background-color: transparent !important;
-
-    box-shadow: none !important;
-
-    transform: scale(1.08);
-  }
-
-  .icons i {
-    font-size: 22px !important;
-
-    color: #fff;
+  .icons i{
+    font-size:22px !important;
 
     text-shadow:
       0 0 8px rgba(0,0,0,0.8),
       0 0 18px rgba(0,0,0,0.6);
   }
 
-  /* Safari動画 */
-  #mainimg {
-    position: fixed;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    z-index: -1;
+  /* 動画 */
+  #mainimg{
+    height:100dvh;
   }
 
-  #mainimg video {
-    width: 100vw;
-    height: 100vh;
+  #mainimg video{
+    width:100vw;
+    height:100dvh;
 
-    object-fit: cover;
+    object-fit:cover;
 
-    transform: translateZ(0);
+    transform:translateZ(0);
 
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    -webkit-transform:translateZ(0);
 
-    will-change: transform;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+  }
+
+  .video-pc{
+    display:none;
+  }
+
+  .video-sp{
+    display:block;
+  }
+
+  /* お知らせ */
+  .new-top{
+    bottom:20px;
+
+    width:calc(100% - 24px);
+
+    padding:10px;
+
+    border-radius:20px;
+  }
+
+  .new-top .text{
+    font-size:12px;
+  }
+
+  .new-top .more a{
+    padding:7px 12px;
+    font-size:12px;
   }
 
 }
 
 /* ======================================
-   TOP動画完全修正版（iPhone対応）
+   その他
 ====================================== */
-
-#mainimg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1;
-  background: #000;
+.clearfix::after{
+  content:"";
+  display:block;
+  clear:both;
 }
 
-/* 動画共通 */
-#mainimg video {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  pointer-events: none;
-
-  background: #000;
+.c{
+  text-align:center !important;
 }
 
-/* PC動画 */
-.video-pc {
-  display: block;
+.l{
+  text-align:left !important;
 }
 
-/* スマホ動画 */
-.video-sp {
-  display: none;
+.r{
+  text-align:right !important;
 }
 
-/* =========================
-   スマホ
-========================= */
-@media screen and (max-width: 600px) {
+.mb0{
+  margin-bottom:0 !important;
+}
 
-  #mainimg {
-    height: 100dvh;
-  }
+.mb30{
+  margin-bottom:30px !important;
+}
 
-  #mainimg video {
-    width: 100vw;
-    height: 100dvh;
-    object-fit: cover;
-  }
-
-  .video-pc {
-    display: none;
-  }
-
-  .video-sp {
-    display: block;
-  }
-
+.block{
+  display:block !important;
 }

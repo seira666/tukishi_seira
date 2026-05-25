@@ -108,3 +108,7 @@ footer,
   }
 
 }
+
+#mainimg{
+  z-index:-10;
+}
