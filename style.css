@@ -439,3 +439,59 @@ body#new{
 #mainimg{
   z-index: -100 !important;
 }
+
+/* ======================================
+   リンク押せない完全修正
+====================================== */
+
+/* 動画レイヤーを完全背面化 */
+#mainimg{
+  position: fixed;
+  inset: 0;
+
+  z-index: -999 !important;
+
+  pointer-events: none !important;
+}
+
+/* 動画自体もクリック無効 */
+#mainimg video{
+  pointer-events: none !important;
+}
+
+/* mainを前面 */
+main{
+  position: relative;
+  z-index: 1000;
+}
+
+/* SNS最前面 */
+.icons{
+  position: fixed !important;
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
+
+.icons a{
+  position: relative;
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
+
+/* TOPお知らせ */
+.new-top{
+  position: fixed !important;
+
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
+
+.new-top a{
+  position: relative;
+  z-index: 999999 !important;
+
+  pointer-events: auto !important;
+}
