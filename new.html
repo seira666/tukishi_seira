@@ -8,23 +8,40 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 
- <style>
-    body {
-      background-image: url('images/game_start.png');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-    }
-    
-    /* スクロールを確認するためのダミーの高さ */
-    .content {
-      height: 2000px;
-      color: white;
-      padding: 50px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
- </style>
- 
+<style>
+
+/* 背景固定用 */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:url('images/game_start.png') center center / cover no-repeat;
+
+  z-index:-1;
+
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+}
+
+/* body */
+body{
+  margin:0;
+  position:relative;
+  background:none;
+}
+
+/* ダミー */
+.content{
+  height:2000px;
+  color:#fff;
+  padding:50px;
+
+  text-shadow:
+    2px 2px 4px rgba(0,0,0,0.5);
+}
+
+</style> 
 
 
 <body id="new">

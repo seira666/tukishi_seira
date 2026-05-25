@@ -7,48 +7,60 @@
 <meta name="description" content="プロフィール紹介">
 <link rel="stylesheet" href="css/style.css">
 </head>
- <style>
+<style>
 
 /* =========================
-   PC背景
+   背景固定（Safari対応）
 ========================= */
-body#profile {
-  background-image: url('images/seira_plofile.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+
+/* PC背景 */
+body#profile::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:url('images/seira_plofile.png') center center / cover no-repeat;
+
+  z-index:-1;
+
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+}
+
+/* body本体 */
+body#profile{
+  position:relative;
+  background:none;
 }
 
 /* ロゴ */
-.profile-main-logo {
-  display: block;
-  margin: 0 auto;
-  width: min(80vw, 400px);
-  height: auto;
+.profile-main-logo{
+  display:block;
+  margin:0 auto;
+  width:min(80vw, 400px);
+  height:auto;
 }
 
 
 /* =========================
    スマホ背景
 ========================= */
-@media screen and (max-width: 899px) {
+@media screen and (max-width:899px){
 
-  body#profile {
-    background-image: url('images/seira_plifile2.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+  body#profile::before{
+
+    background:url('images/seira_plifile2.png')
+    center top / cover no-repeat;
+
   }
 
-  .profile-main-logo {
-    width: min(70vw, 260px);
+  .profile-main-logo{
+    width:min(70vw, 260px);
   }
 
 }
 
- </style>
-
+</style>
 <body id="profile">
 
 <div id="container">
