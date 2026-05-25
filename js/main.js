@@ -192,3 +192,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* =========================================
+   Loading
+========================================= */
+
+window.addEventListener("load", () => {
+
+  const loading = document.getElementById("loading");
+
+  setTimeout(() => {
+
+    loading.classList.add("hide");
+
+  }, 3200);
+
+});
