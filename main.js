@@ -136,3 +136,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+//===============================================================
+// iPhone Safari autoplay 完全対策
+//===============================================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  const videos = document.querySelectorAll("#mainimg video");
+
+  videos.forEach(video => {
+
+    // Safari用
+    video.muted = true;
+    video.defaultMuted = true;
+
+    video.playsInline = true;
+
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+
+    // 強制ロード
+    video.load();
+
+    // 再生
+    const playVideo = () => {
+
+      const promise = video.play();
+
+      if (promise !== undefined) {
+
+        promise
+          .then(() => {
+            console.log("Autoplay success");
+          })
+          .catch(() => {
+            console.log("Autoplay blocked");
+          });
+
+      }
+
+    };
+
+    // 初回再生
+    playVideo();
+
+    // iPhone用保険
+    document.addEventListener(
+      "touchstart",
+      playVideo,
+      { once: true }
+    );
+
+  });
+
+});
