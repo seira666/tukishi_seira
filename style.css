@@ -77,11 +77,22 @@ main{
 }
 
 /* ======================================
+   container
+====================================== */
+
+#container{
+  min-height:100vh;
+  min-height:100dvh;
+  position:relative;
+  z-index:10;
+}
+
+/* ======================================
    TOP動画背景
 ====================================== */
 
 #mainimg{
-  position:fixed;
+  position:fixed !important;
   inset:0;
 
   width:100%;
@@ -90,7 +101,7 @@ main{
 
   overflow:hidden;
 
-  z-index:-999 !important;
+  z-index:-9999 !important;
 
   background:#000;
 
@@ -126,15 +137,6 @@ main{
 }
 
 /* ======================================
-   container
-====================================== */
-
-#container{
-  min-height:100vh;
-  min-height:100dvh;
-}
-
-/* ======================================
    ヘッダー
 ====================================== */
 
@@ -153,7 +155,21 @@ header{
 
   border-right:1px solid rgba(255,255,255,0.15);
 
-  z-index:9999;
+  z-index:1000;
+
+  overflow:hidden;
+
+  pointer-events:none;
+}
+
+/* hoverで開く */
+
+@media (min-width:601px){
+
+  header:hover{
+    width:220px;
+  }
+
 }
 
 /* ロゴ */
@@ -161,6 +177,8 @@ header{
 #logo{
   margin:18px 0;
   text-align:center;
+
+  pointer-events:auto;
 }
 
 #logo img{
@@ -168,6 +186,10 @@ header{
 }
 
 /* ナビ */
+
+header nav{
+  pointer-events:auto;
+}
 
 header nav ul{
   display:flex;
@@ -187,6 +209,8 @@ header nav ul li a{
   color:#fff;
 
   transition:0.25s;
+
+  pointer-events:auto;
 }
 
 header nav ul li a:hover{
@@ -213,17 +237,25 @@ header nav i{
 
   gap:12px;
 
-  z-index:999999 !important;
+  z-index:999999;
 
-  pointer-events:auto !important;
+  pointer-events:auto;
+}
+
+.icons li{
+  pointer-events:auto;
 }
 
 .icons a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   position:relative;
 
-  z-index:999999 !important;
+  z-index:999999;
 
-  pointer-events:auto !important;
+  pointer-events:auto;
 
   color:#fff;
 
@@ -267,9 +299,9 @@ header nav i{
 
   backdrop-filter:blur(10px);
 
-  z-index:999999 !important;
+  z-index:999999;
 
-  pointer-events:auto !important;
+  pointer-events:auto;
 }
 
 /* テキスト */
@@ -293,12 +325,6 @@ header nav i{
 }
 
 .new-top .more a{
-  position:relative;
-
-  z-index:999999 !important;
-
-  pointer-events:auto !important;
-
   display:inline-block;
 
   padding:10px 18px;
@@ -309,6 +335,8 @@ header nav i{
   color:#fff;
 
   transition:0.25s;
+
+  pointer-events:auto;
 }
 
 .new-top .more a:hover{
@@ -596,97 +624,6 @@ body#new{
   body#new::before{
     background-image:
       url("../images/game_start.png");
-  }
-
-}
-
-/* =========================================
-   リンク押せない問題 完全修正
-========================================= */
-
-/* 背景動画を完全背面 */
-#mainimg{
-  position: fixed !important;
-  inset: 0 !important;
-
-  z-index: -9999 !important;
-
-  pointer-events: none !important;
-}
-
-#mainimg video{
-  pointer-events: none !important;
-}
-
-/* メイン */
-main{
-  position: relative !important;
-  z-index: 1000 !important;
-}
-
-/* ヘッダー */
-header{
-  z-index: 5000 !important;
-}
-
-/* SNS */
-.icons{
-  position: fixed !important;
-
-  top: 20px !important;
-  right: 20px !important;
-
-  z-index: 999999 !important;
-
-  pointer-events: auto !important;
-}
-
-.icons li{
-  position: relative !important;
-  z-index: 999999 !important;
-}
-
-.icons a{
-  position: relative !important;
-
-  display: flex !important;
-
-  z-index: 999999 !important;
-
-  pointer-events: auto !important;
-}
-
-/* Moreお知らせ */
-.new-top{
-  position: fixed !important;
-
-  z-index: 999999 !important;
-
-  pointer-events: auto !important;
-}
-
-.new-top *{
-  pointer-events: auto !important;
-}
-
-.new-top a{
-  position: relative !important;
-
-  z-index: 999999 !important;
-
-  display: inline-block !important;
-}
-
-/* スマホ */
-@media screen and (max-width:600px){
-
-  .icons{
-    top: 85px !important;
-    right: 12px !important;
-  }
-
-  .new-top{
-    bottom: 15px !important;
   }
 
 }
