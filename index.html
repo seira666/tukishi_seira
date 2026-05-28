@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -17,6 +18,8 @@ content="width=device-width, initial-scale=1">
 name="description"
 content="星羅の活動報告サイト🍀*.">
 
+<link rel="stylesheet" href="css/style.css">
+
 <!-- FontAwesome -->
 <link
 rel="stylesheet"
@@ -25,34 +28,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <style>
 
 /* ======================================
-   RESET
+   クリック不能 完全修正
 ====================================== */
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html,
-body{
-  width:100%;
-  height:100%;
-  overflow-x:hidden;
-
-  background:#000;
-  color:#fff;
-
-  font-family:
-    "ヒラギノ丸ゴ Pro",
-    "メイリオ",
-    sans-serif;
-}
-
-/* ======================================
-   背景動画
-====================================== */
-
+/* 背景動画 */
 #mainimg{
   position:fixed;
   inset:0;
@@ -62,18 +41,19 @@ body{
 
   overflow:hidden;
 
-  z-index:-1;
+  z-index:1;
 
-  background:#000;
+  pointer-events:none !important;
 }
 
-/* ← 黒幕防止 */
-
-#mainimg::before{
+/* 黒幕削除 */
+#mainimg::before,
+#mainimg::after{
   display:none !important;
   content:none !important;
 }
 
+/* 動画 */
 #mainimg video{
   position:absolute;
   inset:0;
@@ -84,12 +64,12 @@ body{
   object-fit:cover;
   object-position:center center;
 
-  pointer-events:none;
-
-  background:transparent;
+  background:transparent !important;
 
   opacity:1 !important;
   visibility:visible !important;
+
+  pointer-events:none !important;
 
   z-index:1;
 
@@ -101,224 +81,75 @@ body{
 }
 
 /* PC */
-
 .video-pc{
-  display:block !important;
+  display:block;
 }
 
 /* SP */
-
 .video-sp{
-  display:none !important;
+  display:none;
 }
 
-/* ======================================
-   HEADER
-====================================== */
-
-header{
-  position:fixed;
-
-  top:0;
-  left:0;
-
-  width:90px;
-  height:100vh;
-
-  display:flex;
-  flex-direction:column;
-
-  background:rgba(120,200,255,0.18);
-
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-
-  border-right:
-    1px solid rgba(255,255,255,0.25);
-
-  box-shadow:
-    0 0 25px rgba(120,200,255,0.18);
-
+/* 前面 */
+header,
+main,
+footer,
+.icons,
+.new-top,
+.pr{
+  position:relative;
   z-index:999999;
-
-  overflow:hidden;
-
-  transition:0.35s ease;
 }
 
-/* hover */
-
-@media (min-width:601px){
-
-  header:hover{
-    width:220px;
-
-    background:
-      rgba(120,200,255,0.28);
-  }
-
+/* pagetop */
+.pagetop{
+  pointer-events:none !important;
 }
 
-/* logo */
-
-#logo{
-  margin:18px 0;
-  text-align:center;
-}
-
-#logo img{
-  width:65px;
-}
-
-/* nav */
-
-header nav ul{
-  list-style:none;
-}
-
-header nav ul li a{
-  display:flex;
-  align-items:center;
-
-  width:100%;
-  height:60px;
-
-  padding:0 18px;
-
-  gap:12px;
-
-  color:#fff;
-  text-decoration:none;
-
-  transition:0.25s;
-}
-
-header nav ul li a:hover{
-  background:rgba(255,255,255,0.12);
-}
-
-header nav ul li a span{
-  opacity:0;
-  transition:0.25s;
-}
-
-@media (min-width:601px){
-
-  header:hover nav ul li a span{
-    opacity:1;
-  }
-
-}
-
-/* ======================================
-   SNS
-====================================== */
-
+/* SNS */
 .icons{
-  position:fixed;
-
+  position:fixed !important;
   top:20px;
   right:20px;
-
-  display:flex;
-  flex-direction:column;
-
-  gap:12px;
-
-  z-index:999999;
-
-  list-style:none;
 }
 
-.icons a{
-  color:#fff;
-  font-size:24px;
-
-  text-shadow:
-    0 0 10px rgba(0,0,0,0.8);
-
-  transition:0.25s;
-}
-
-.icons a:hover{
-  transform:scale(1.08);
-}
-
-/* ======================================
-   お知らせ
-====================================== */
-
+/* お知らせ */
 .new-top{
-  position:fixed;
-
-  left:50%;
-  transform:translateX(-50%);
-
-  bottom:28px;
-
-  width:min(900px,calc(100% - 40px));
-
-  display:flex;
-  align-items:center;
-
-  gap:12px;
-
-  padding:14px 18px;
-
-  border-radius:999px;
-
-  background:rgba(0,0,0,0.45);
-
-  backdrop-filter:blur(10px);
-
-  z-index:999999;
+  position:fixed !important;
 }
 
-.new-top .text{
-  flex:1;
-  color:#fff;
+/* header */
+header{
+  z-index:999999 !important;
 }
 
-.new-top .more a{
-  display:inline-block;
-
-  padding:10px 18px;
-
-  border-radius:999px;
-
-  text-decoration:none;
-
-  background:
-    linear-gradient(
-      135deg,
-      #69b7ff,
-      #9d7bff
-    );
-
-  color:#fff;
+/* body */
+body{
+  background:transparent !important;
 }
 
-/* ======================================
-   LOADING
-====================================== */
-
+/* Loading */
 #loading{
   position:fixed;
   inset:0;
+
+  z-index:99999999;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  background:#000;
-
-  z-index:99999999;
-
-  overflow:hidden;
+  background:transparent;
 
   transition:
-    opacity 1.5s ease,
-    visibility 1.5s ease;
+    opacity 1.2s ease,
+    visibility 1.2s ease;
+}
+
+#loading.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
 
 .loading-bg{
@@ -333,9 +164,6 @@ header nav ul li a span{
 .loading-logo{
   position:relative;
   z-index:10;
-
-  animation:
-    logoFade 2.5s ease forwards;
 }
 
 .loading-logo img{
@@ -345,80 +173,7 @@ header nav ul li a span{
     drop-shadow(0 0 25px rgba(255,255,255,0.6));
 }
 
-#loading.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-
-@keyframes logoFade{
-
-  0%{
-    opacity:0;
-
-    transform:
-      translateY(30px)
-      scale(0.9);
-  }
-
-  100%{
-    opacity:1;
-
-    transform:
-      translateY(0)
-      scale(1);
-  }
-
-}
-
-/* ======================================
-   FOOTER
-====================================== */
-
-footer small{
-  position:fixed;
-
-  right:12px;
-  bottom:12px;
-
-  color:#fff;
-
-  z-index:999999;
-}
-
-/* ======================================
-   TEMPLATE
-====================================== */
-
-.pr{
-  position:fixed;
-
-  left:14px;
-  bottom:12px;
-
-  z-index:999999;
-
-  font-size:12px;
-}
-
-.pr a{
-  color:#fff;
-  text-decoration:none;
-
-  background:
-    rgba(0,0,0,0.35);
-
-  padding:6px 10px;
-
-  border-radius:999px;
-
-  backdrop-filter:blur(8px);
-}
-
-/* ======================================
-   SP
-====================================== */
-
+/* SP */
 @media screen and (max-width:600px){
 
   .video-pc{
@@ -427,76 +182,6 @@ footer small{
 
   .video-sp{
     display:block !important;
-  }
-
-  header{
-    width:100%;
-    height:70px;
-
-    flex-direction:row;
-
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 12px;
-  }
-
-  #logo{
-    margin:0;
-  }
-
-  #logo img{
-    width:52px;
-  }
-
-  header nav{
-    overflow-x:auto;
-  }
-
-  header nav ul{
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-
-  header nav ul li a{
-    width:auto;
-    height:auto;
-
-    padding:8px 12px;
-
-    border-radius:999px;
-
-    background:
-      rgba(255,255,255,0.08);
-
-    font-size:11px;
-  }
-
-  header nav ul li a span{
-    opacity:1;
-  }
-
-  .icons{
-    top:84px;
-    right:12px;
-  }
-
-  .new-top{
-    bottom:16px;
-
-    width:calc(100% - 20px);
-
-    border-radius:18px;
-  }
-
-  .new-top .text{
-    font-size:12px;
-  }
-
-  .new-top .more a{
-    padding:8px 12px;
-    font-size:11px;
   }
 
 }
@@ -508,7 +193,6 @@ footer small{
 <body class="home">
 
 <!-- Loading -->
-
 <div id="loading">
 
   <div class="loading-bg"></div>
@@ -523,8 +207,9 @@ footer small{
 
 </div>
 
-<!-- Header -->
+<div id="container">
 
+<!-- Header -->
 <header>
 
 <h1 id="logo">
@@ -570,38 +255,48 @@ alt="星羅の色を探す旅🍀*.">
 
 </header>
 
-<!-- SNS -->
+<!-- Main -->
+<main>
 
+<!-- SNS -->
 <ul class="icons">
 
 <li>
 <a
 href="https://x.com/tukishi_seira?s=21&t=Y4o8jz4G-Ofc76n5fOjSOg"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
+
 <i class="fa-brands fa-x-twitter"></i>
+
 </a>
 </li>
 
 <li>
 <a
 href="https://www.youtube.com/@nyam.tukishi_seira"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
+
 <i class="fab fa-youtube"></i>
+
 </a>
 </li>
 
 <li>
 <a
 href="https://www.instagram.com/nyam.tukishi_seira/"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
+
 <i class="fab fa-instagram"></i>
+
 </a>
 </li>
 
 </ul>
 
 <!-- お知らせ -->
-
 <div class="new-top">
 
 <p class="text">
@@ -614,45 +309,50 @@ YouTube始動！星羅の色探しの旅へ〜
 
 </div>
 
+</main>
+
 <!-- 背景動画 -->
+<aside id="mainimg" aria-hidden="true">
 
-<aside id="mainimg">
+  <!-- PC -->
+  <video
+    id="bg-video-pc"
+    class="video-pc"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    poster="images/YouTube用背景_くま部屋.jpeg">
 
-<aside id="mainimg">
+    <source
+      src="./images/chibiseira_pc.mp4"
+      type="video/mp4">
 
-<video
-class="video-pc"
-muted
-autoplay
-loop
-playsinline
-webkit-playsinline
-preload="auto">
+  </video>
 
-<source
-src="./images/chibiseira_pc.mp4"
-type="video/mp4">
+  <!-- SP -->
+  <video
+    id="bg-video-sp"
+    class="video-sp"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    poster="images/YouTube用背景_くま部屋.jpeg">
 
-</video>
+    <source
+      src="./images/chibiseira_sp.mp4"
+      type="video/mp4">
 
-<video
-class="video-sp"
-muted
-autoplay
-loop
-playsinline
-webkit-playsinline
-preload="auto">
-
-<source
-src="./images/chibiseira_sp.mp4"
-type="video/mp4">
-
-</video>
+  </video>
 
 </aside>
-<!-- footer -->
 
+<!-- footer -->
 <footer>
 
 <small>
@@ -661,13 +361,13 @@ Copyright© Tukishi_seira Site
 
 </footer>
 
-<!-- template -->
-
+<!-- template-party -->
 <span class="pr">
 
 <a
 href="https://template-party.com/"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
 
 《Web Design:Template-Party》
 
@@ -675,9 +375,31 @@ target="_blank">
 
 </span>
 
-<!-- jquery -->
+<!-- pagetop -->
+<div class="pagetop">
 
+<a href="#">
+
+<i class="fas fa-angle-double-up"></i>
+
+</a>
+
+</div>
+
+<!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Masonry -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+
+<!-- imagesLoaded -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
+
+<!-- Fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<!-- main.js -->
+<script src="js/main.js"></script>
 
 <script>
 
@@ -689,16 +411,22 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
 
-    document
-      .getElementById("loading")
-      .classList.add("hide");
+    const loading =
+      document.getElementById("loading");
+
+    if(loading){
+
+      loading.classList.add("hide");
+
+    }
 
   }, 2500);
 
 });
 
+
 /* ======================================
-   背景動画
+   背景動画 完全版
 ====================================== */
 
 window.addEventListener("load", () => {
@@ -712,24 +440,28 @@ window.addEventListener("load", () => {
   const spVideo =
     document.getElementById("bg-video-sp");
 
-  /* 使用動画 */
+  if(!pcVideo || !spVideo) return;
+
+  // 使用動画
 
   const targetVideo =
     isSP ? spVideo : pcVideo;
 
-  /* 非使用停止 */
+  // 非使用停止
 
   if(isSP){
 
     pcVideo.pause();
+    pcVideo.style.display = "none";
 
   }else{
 
     spVideo.pause();
+    spVideo.style.display = "none";
 
   }
 
-  /* Safari対策 */
+  // Safari autoplay対策
 
   targetVideo.muted = true;
   targetVideo.defaultMuted = true;
@@ -740,11 +472,15 @@ window.addEventListener("load", () => {
   targetVideo.setAttribute("playsinline","");
   targetVideo.setAttribute("webkit-playsinline","");
 
-  /* 読み込み */
+  // preload
+
+  targetVideo.preload = "auto";
+
+  // load
 
   targetVideo.load();
 
-  /* 再生 */
+  // 再生関数
 
   const playVideo = () => {
 
@@ -753,35 +489,17 @@ window.addEventListener("load", () => {
 
     if(promise !== undefined){
 
-      promise
-      .then(() => {
-
-        console.log("動画再生成功");
-
-      })
-      .catch((error) => {
-
-        console.log("再生失敗", error);
-
-      });
+      promise.catch(() => {});
 
     }
 
   };
 
-  /* 初回 */
+  // 初回
 
   playVideo();
 
-  /* PC復帰 */
-
-  document.addEventListener(
-    "mousemove",
-    playVideo,
-    { once:true }
-  );
-
-  /* スマホ復帰 */
+  // Safari復帰
 
   document.addEventListener(
     "touchstart",
@@ -789,7 +507,21 @@ window.addEventListener("load", () => {
     { once:true }
   );
 
-  /* タブ復帰 */
+  // Chrome復帰
+
+  document.addEventListener(
+    "mousemove",
+    playVideo,
+    { once:true }
+  );
+
+  document.addEventListener(
+    "click",
+    playVideo,
+    { once:true }
+  );
+
+  // タブ復帰
 
   document.addEventListener(
     "visibilitychange",
@@ -810,3 +542,4 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+```
