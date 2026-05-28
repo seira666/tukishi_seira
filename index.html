@@ -76,29 +76,46 @@ header{
 </style>
 <body class="home">
 
-<!-- Loading -->
+<!-- ローディング -->
 <div id="loading">
 
   <div class="loading-bg"></div>
 
   <div class="loading-logo">
-    <img src="images/ロゴ月汐星羅.png" alt="月汐 星羅">
+    <img src="images/ロゴ月汐星羅.png" alt="Loading">
   </div>
 
 </div>
-
 <div id="container">
 <header>
 
 <h1 id="logo"><a href="index.html"><img src="images/ロゴ月汐星羅.png" alt="星羅の色を探す旅🍀*."></a></h1>
 <nav>
 <ul>
-<li><a href="index.html"><i class="fa-solid fa-house"></i><span>HOME</span></a></li>
-<li><a href="profile.html"><i class="fa-solid fa-user"></i><span>PROFILE</span></a></li>
-<li><a href="portfolio.html"><i class="fa-solid fa-palette"></i><span>PORTFOLIO</span></a></li>
+
+<li>
+<a href="index.html">
+<i class="fa-solid fa-house"></i>
+<span>HOME</span>
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+<i class="fa-solid fa-user"></i>
+<span>PROFILE</span>
+</a>
+</li>
+
+<li>
+<a href="portfolio.html">
+<i class="fa-solid fa-palette"></i>
+<span>PORTFOLIO</span>
+</a>
+</li>
+
 </ul>
 </nav>
-
 </header>
 
 <main>
@@ -171,6 +188,14 @@ header{
 
 <!--このテンプレート専用のスクリプト-->
 <script src="js/main.js"></script>
+
+<script>
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loading').style.display = 'none';
+  }, 3200);
+});
+</script>
 
 </body>
 </html>

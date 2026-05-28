@@ -492,13 +492,149 @@ body#new{
     display:block;
   }
 
-  /* ヘッダー */
+/* ======================================
+   ヘッダー 完成版
+====================================== */
+
+header{
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:90px;
+  height:100vh;
+
+  display:flex;
+  flex-direction:column;
+
+  background:rgba(0,0,0,0.35);
+
+  backdrop-filter:blur(10px);
+
+  border-right:1px solid rgba(255,255,255,0.15);
+
+  z-index:999999;
+
+  overflow:hidden;
+
+  transition:0.35s ease;
+
+  pointer-events:auto;
+}
+
+/* ======================================
+   PC hover
+====================================== */
+
+@media (min-width:601px){
+
+  header:hover{
+    width:220px;
+  }
+
+}
+
+/* ======================================
+   ロゴ
+====================================== */
+
+#logo{
+  margin:18px 0;
+  text-align:center;
+  flex-shrink:0;
+}
+
+#logo img{
+  max-width:65px;
+}
+
+/* ======================================
+   nav
+====================================== */
+
+header nav{
+  width:100%;
+  pointer-events:auto;
+}
+
+header nav ul{
+  display:flex;
+  flex-direction:column;
+
+  width:100%;
+
+  margin:0;
+  padding:0;
+
+  list-style:none;
+}
+
+header nav ul li{
+  width:100%;
+}
+
+header nav ul li a{
+  display:flex;
+  align-items:center;
+
+  width:100%;
+  height:60px;
+
+  padding:0 18px;
+
+  gap:12px;
+
+  color:#fff;
+
+  transition:0.25s;
+
+  white-space:nowrap;
+
+  pointer-events:auto;
+}
+
+header nav ul li a:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+header nav i{
+  width:20px;
+  text-align:center;
+  flex-shrink:0;
+}
+
+/* ======================================
+   メニュー文字
+====================================== */
+
+header nav ul li a span{
+  opacity:0;
+  transition:0.25s;
+}
+
+/* hover時表示 */
+
+@media (min-width:601px){
+
+  header:hover nav ul li a span{
+    opacity:1;
+  }
+
+}
+
+/* ======================================
+   スマホ
+====================================== */
+
+@media screen and (max-width:600px){
 
   header{
     width:100%;
     height:70px;
 
-    display:flex;
+    flex-direction:row;
+
     align-items:center;
     justify-content:space-between;
 
@@ -518,15 +654,32 @@ body#new{
     max-width:52px;
   }
 
+  header nav{
+    flex:1;
+    margin-left:10px;
+
+    overflow-x:auto;
+  }
+
   header nav ul{
     flex-direction:row;
+
+    justify-content:flex-end;
+    align-items:center;
+
     gap:8px;
   }
 
+  header nav ul li{
+    width:auto;
+    flex-shrink:0;
+  }
+
   header nav ul li a{
+    width:auto;
     height:auto;
 
-    padding:8px 10px;
+    padding:8px 12px;
 
     border-radius:999px;
 
@@ -537,6 +690,13 @@ body#new{
     gap:5px;
   }
 
+  /* スマホは文字常時表示 */
+
+  header nav ul li a span{
+    opacity:1;
+  }
+
+}
   /* SNS */
 
   .icons{
@@ -745,4 +905,54 @@ body#new{
     width:78vw;
   }
 
+}
+
+/* ======================================
+   Loading
+====================================== */
+
+#loading{
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:url("../images/loading_bg.png") center center / cover no-repeat;
+
+  z-index:9999999;
+
+  animation:loadingFade 1.2s ease 2.2s forwards;
+}
+
+#loading img{
+  width:min(280px, 70vw);
+
+  opacity:0;
+
+  animation:logoFade 2s ease forwards;
+
+  filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.7))
+    drop-shadow(0 0 30px rgba(173,216,255,0.8));
+}
+
+@keyframes logoFade{
+  0%{
+    opacity:0;
+    transform:scale(0.8);
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes loadingFade{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
 }
