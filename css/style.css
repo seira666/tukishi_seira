@@ -34,8 +34,10 @@ html,
 body{
   margin:0;
   padding:0;
+
   width:100%;
   min-height:100%;
+
   overflow-x:hidden;
 
   font-family:
@@ -131,7 +133,6 @@ main{
 
   0%{
     opacity:0;
-
     transform:
       scale(0.8)
       translateY(20px);
@@ -139,7 +140,6 @@ main{
 
   100%{
     opacity:1;
-
     transform:
       scale(1)
       translateY(0);
@@ -157,26 +157,16 @@ main{
 
   width:100%;
   height:100vh;
-  height:100svh;
+  height:100dvh;
 
   overflow:hidden;
 
-  z-index:-10;
+  z-index:-9999 !important;
+
+  pointer-events:none !important;
 
   background:#000;
-
-  pointer-events:none;
-
-  transform:translate3d(0,0,0);
-  -webkit-transform:translate3d(0,0,0);
-
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-
-  will-change:transform;
 }
-
-/* 動画共通 */
 
 #mainimg video{
   position:absolute;
@@ -186,33 +176,18 @@ main{
   height:100%;
 
   object-fit:cover;
-  object-position:center center;
 
-  pointer-events:none;
+  pointer-events:none !important;
 
   background:#000;
-
-  transform:translate3d(0,0,0);
-  -webkit-transform:translate3d(0,0,0);
-
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-
-  will-change:transform;
 }
-
-/* ===== PC動画 ===== */
 
 .video-pc{
-  display:block !important;
-  z-index:1;
+  display:block;
 }
 
-/* ===== SP動画 ===== */
-
 .video-sp{
-  display:none !important;
-  z-index:1;
+  display:none;
 }
 
 /* ======================================
@@ -220,7 +195,7 @@ main{
 ====================================== */
 
 header{
-  position:fixed !important;
+  position:fixed;
 
   top:0;
   left:0;
@@ -231,50 +206,31 @@ header{
   display:flex;
   flex-direction:column;
 
-  /* 半透明水色 */
-  background:rgba(120,200,255,0.18);
+  background:rgba(0,0,0,0.35);
 
-  /* ガラス風 */
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(10px);
 
   border-right:
-    1px solid rgba(255,255,255,0.25);
+    1px solid rgba(255,255,255,0.15);
 
-  box-shadow:
-    0 0 25px rgba(120,200,255,0.18);
-
-  z-index:999999;
+  z-index:99999;
 
   overflow:hidden;
 
-  transition:
-    width 0.35s ease,
-    background 0.35s ease,
-    box-shadow 0.35s ease;
+  transition:0.35s ease;
 }
 
-/* ======================================
-   PC hover
-====================================== */
+/* PC hover */
 
 @media (min-width:601px){
 
   header:hover{
     width:220px;
-
-    background:
-      rgba(120,200,255,0.28);
-
-    box-shadow:
-      0 0 40px rgba(120,200,255,0.28);
   }
 
 }
 
-/* ======================================
-   ロゴ
-====================================== */
+/* ロゴ */
 
 #logo{
   margin:18px 0;
@@ -286,9 +242,7 @@ header{
   max-width:65px;
 }
 
-/* ======================================
-   nav
-====================================== */
+/* nav */
 
 header nav{
   width:100%;
@@ -297,6 +251,7 @@ header nav{
 header nav ul{
   display:flex;
   flex-direction:column;
+
   width:100%;
 }
 
@@ -319,19 +274,11 @@ header nav ul li a{
 
   white-space:nowrap;
 
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+  transition:0.25s;
 }
 
 header nav ul li a:hover{
-
-  background:
-    rgba(255,255,255,0.16);
-
-  transform:
-    translateX(3px);
-
+  background:rgba(255,255,255,0.1);
 }
 
 header nav i{
@@ -344,7 +291,7 @@ header nav i{
 
 header nav ul li a span{
   opacity:0;
-  transition:opacity 0.25s ease;
+  transition:0.25s;
 }
 
 @media (min-width:601px){
@@ -498,6 +445,7 @@ body:not(.home) main{
 .masonry-grid{
   display:flex;
   flex-wrap:wrap;
+
   gap:16px;
 }
 
@@ -577,48 +525,42 @@ body#new{
 
 @media screen and (max-width:600px){
 
-  /* ===== 動画 ===== */
+  /* 動画 */
 
   #mainimg{
-    width:100vw;
-    height:100vh;
-    height:100svh;
+    height:100dvh;
   }
 
   #mainimg video{
     width:100vw;
-    height:100vh;
-    height:100svh;
+    height:100dvh;
   }
 
   .video-pc{
-    display:none !important;
+    display:none;
   }
 
   .video-sp{
-    display:block !important;
+    display:block;
   }
 
-  /* ===== Header ===== */
+  /* Header */
 
   header{
-    width:100% !important;
-    height:70px !important;
+    width:100%;
+    height:70px;
 
-    flex-direction:row !important;
+    flex-direction:row;
 
-    align-items:center !important;
-    justify-content:space-between !important;
+    align-items:center;
+    justify-content:space-between;
 
-    padding:0 12px !important;
+    padding:0 12px;
 
-    border-right:none !important;
+    border-right:none;
 
     border-bottom:
-      1px solid rgba(255,255,255,0.25);
-
-    background:
-      rgba(120,200,255,0.18);
+      1px solid rgba(255,255,255,0.15);
   }
 
   #logo{
@@ -638,8 +580,10 @@ body#new{
 
   header nav ul{
     flex-direction:row;
+
     justify-content:flex-end;
     align-items:center;
+
     gap:8px;
   }
 
@@ -663,11 +607,13 @@ body#new{
     gap:5px;
   }
 
+  /* スマホ文字表示 */
+
   header nav ul li a span{
     opacity:1;
   }
 
-  /* ===== SNS ===== */
+  /* SNS */
 
   .icons{
     top:84px;
@@ -680,7 +626,7 @@ body#new{
     font-size:22px;
   }
 
-  /* ===== main ===== */
+  /* main */
 
   body:not(.home) main{
     padding:
@@ -689,7 +635,7 @@ body#new{
       60px;
   }
 
-  /* ===== お知らせ ===== */
+  /* お知らせ */
 
   .new-top{
     bottom:16px;
@@ -712,13 +658,13 @@ body#new{
     font-size:11px;
   }
 
-  /* ===== masonry ===== */
+  /* masonry */
 
   .grid-item{
     width:calc(50% - 8px);
   }
 
-  /* ===== iPhone背景 ===== */
+  /* iPhone背景 */
 
   body#profile,
   body#portfolio,
@@ -754,6 +700,145 @@ body#new{
   body#new::before{
     background-image:
       url("../images/game_start.png");
+  }
+
+}
+
+/* ======================================
+   Header 最終固定
+====================================== */
+
+header{
+  position:fixed !important;
+
+  top:0 !important;
+  left:0 !important;
+
+  width:90px !important;
+  height:100vh !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+
+  background:rgba(0,0,0,0.35) !important;
+
+  backdrop-filter:blur(10px);
+
+  border-right:
+    1px solid rgba(255,255,255,0.15);
+
+  z-index:999999 !important;
+
+  overflow:hidden !important;
+
+  transition:0.35s ease;
+}
+
+/* PC hover */
+
+@media (min-width:601px){
+
+  header:hover{
+    width:220px !important;
+  }
+
+}
+
+/* nav */
+
+header nav{
+  width:100%;
+}
+
+header nav ul{
+  display:flex !important;
+  flex-direction:column !important;
+
+  width:100%;
+}
+
+header nav ul li{
+  width:100%;
+}
+
+header nav ul li a{
+  display:flex !important;
+  align-items:center;
+
+  width:100%;
+  height:60px;
+
+  gap:12px;
+
+  padding:0 18px;
+
+  white-space:nowrap;
+}
+
+/* 文字 */
+
+header nav ul li a span{
+  opacity:0;
+  transition:0.25s;
+}
+
+@media (min-width:601px){
+
+  header:hover nav ul li a span{
+    opacity:1;
+  }
+
+}
+
+/* ======================================
+   SP
+====================================== */
+
+@media screen and (max-width:600px){
+
+  header{
+    width:100% !important;
+    height:70px !important;
+
+    flex-direction:row !important;
+
+    align-items:center !important;
+    justify-content:space-between !important;
+
+    padding:0 12px !important;
+
+    border-right:none !important;
+
+    border-bottom:
+      1px solid rgba(255,255,255,0.15);
+  }
+
+  header nav ul{
+    flex-direction:row !important;
+
+    align-items:center;
+
+    gap:8px;
+  }
+
+  header nav ul li{
+    width:auto;
+  }
+
+  header nav ul li a{
+    width:auto !important;
+    height:auto !important;
+
+    padding:8px 10px !important;
+
+    border-radius:999px;
+
+    background:
+      rgba(255,255,255,0.08);
+  }
+
+  header nav ul li a span{
+    opacity:1;
   }
 
 }

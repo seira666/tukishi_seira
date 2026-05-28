@@ -1,15 +1,10 @@
 //===============================================================
-// Masonry + Fancybox + Video
-// 完全完成版
+// Masonry + Fancybox + 動画ホバー処理（iPhone完全安定版）
 //===============================================================
-
 $(function () {
 
   const $grid = $('.masonry-grid');
 
-  //===========================================================
-  // Masonry
-  //===========================================================
   if ($grid.length) {
 
     // タッチ端末判定
@@ -17,85 +12,49 @@ $(function () {
       ('ontouchstart' in window) ||
       (navigator.maxTouchPoints > 0);
 
-    //===========================================================
-    // PC hover動画再生
-    //===========================================================
+    // ============================================================
+    // PCのみ hover 動画再生
+    // ============================================================
     if (!isTouchDevice) {
 
-      $grid.on(
-        'mouseenter',
-        '.is-video video',
-        function () {
+      $grid.on('mouseenter', '.is-video video', function () {
+        this.play();
+      });
 
-          this.muted = true;
-
-          const playPromise =
-            this.play();
-
-          if (playPromise !== undefined) {
-
-            playPromise.catch(() => {});
-
-          }
-
-        }
-      );
-
-      $grid.on(
-        'mouseleave',
-        '.is-video video',
-        function () {
-
-          this.pause();
-
-          this.currentTime = 0;
-
-        }
-      );
+      $grid.on('mouseleave', '.is-video video', function () {
+        this.pause();
+      });
 
     }
 
-    //===========================================================
+    // ============================================================
     // Masonry初期化
-    //===========================================================
+    // ============================================================
     $grid.imagesLoaded(function () {
 
       $grid.masonry({
-
         itemSelector: '.grid-item',
-
         columnWidth: '.grid-sizer',
-
         percentPosition: true,
-
         gutter: 16
-
       });
 
     });
 
-    //===========================================================
-    // layout更新
-    //===========================================================
+    // ============================================================
+    // レイアウト更新
+    // ============================================================
     $grid.imagesLoaded().progress(function () {
-
       $grid.masonry('layout');
-
     });
 
-    //===========================================================
+    // ============================================================
     // Fancybox
-    //===========================================================
+    // ============================================================
     $('[data-fancybox]').fancybox({
-
       loop: true,
-
       smallBtn: true,
-
-      toolbar: false,
-
-      protect: true
-
+      toolbar: false
     });
 
   }
@@ -104,107 +63,54 @@ $(function () {
 
 
 //===============================================================
-// 背景動画 autoplay 完全版
-// PC / iPhone / Safari / Chrome
+// iPhone Safari 背景動画 autoplay 完全対策
 //===============================================================
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-  //===========================================================
-  // loading後に再生
-  //===========================================================
-  setTimeout(() => {
+  // 背景動画のみ対象
+  const videos = document.querySelectorAll("#mainimg video");
 
-    const isSP =
-      window.innerWidth <= 600;
+  if (!videos.length) return;
 
-    //===========================================================
-    // 使用動画
-    //===========================================================
-    const targetVideo =
-      document.querySelector(
-        isSP
-        ? "#mainimg .video-sp"
-        : "#mainimg .video-pc"
-      );
+  videos.forEach(video => {
 
-    if (!targetVideo) return;
+    // =========================================
+    // iPhone Safari 必須設定
+    // =========================================
+    video.muted = true;
+    video.defaultMuted = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
 
-    //===========================================================
-    // 非使用動画停止
-    //===========================================================
-    const allVideos =
-      document.querySelectorAll("#mainimg video");
+    // 属性強制付与
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
 
-    allVideos.forEach(video => {
+    // 読み込み
+    video.load();
 
-      if (video !== targetVideo) {
+    // =========================================
+    // 再生処理
+    // =========================================
+    const playVideo = () => {
 
-        video.pause();
+      const promise = video.play();
 
-        video.style.display = "none";
+      if (promise !== undefined) {
 
-      }
-
-    });
-
-    //===========================================================
-    // Safari autoplay対策
-    //===========================================================
-    targetVideo.muted = true;
-    targetVideo.defaultMuted = true;
-
-    targetVideo.autoplay = true;
-    targetVideo.loop = true;
-
-    targetVideo.playsInline = true;
-
-    targetVideo.setAttribute("muted", "");
-    targetVideo.setAttribute("autoplay", "");
-    targetVideo.setAttribute("loop", "");
-    targetVideo.setAttribute("playsinline", "");
-    targetVideo.setAttribute("webkit-playsinline", "");
-
-    //===========================================================
-    // preload
-    //===========================================================
-    targetVideo.preload = "auto";
-
-    //===========================================================
-    // 強制表示
-    //===========================================================
-    targetVideo.style.opacity = "1";
-
-    targetVideo.style.visibility = "visible";
-
-    targetVideo.style.display = "block";
-
-    //===========================================================
-    // load
-    //===========================================================
-    targetVideo.load();
-
-    //===========================================================
-    // 再生関数
-    //===========================================================
-    const startVideo = () => {
-
-      const playPromise =
-        targetVideo.play();
-
-      if (playPromise !== undefined) {
-
-        playPromise
+        promise
           .then(() => {
 
-            console.log("BACKGROUND VIDEO PLAY OK");
+            console.log("Background video autoplay OK");
 
           })
-          .catch(error => {
+          .catch(() => {
 
-            console.log(
-              "BACKGROUND VIDEO BLOCKED",
-              error
-            );
+            console.log("Autoplay blocked");
 
           });
 
@@ -212,92 +118,77 @@ window.addEventListener("load", () => {
 
     };
 
-    //===========================================================
     // 初回再生
-    //===========================================================
-    startVideo();
+    playVideo();
 
-    //===========================================================
-    // PC操作後
-    //===========================================================
-    document.addEventListener(
-      "mousemove",
-      startVideo,
-      { once:true }
-    );
+    // iPhoneで停止した時の復帰
+    document.addEventListener("touchstart", playVideo, { passive: true });
 
-    //===========================================================
-    // iPhone操作後
-    //===========================================================
-    document.addEventListener(
-      "touchstart",
-      startVideo,
-      { once:true }
-    );
+    // Safariが裏復帰した時
+    document.addEventListener("visibilitychange", () => {
 
-    //===========================================================
-    // click後
-    //===========================================================
-    document.addEventListener(
-      "click",
-      startVideo,
-      { once:true }
-    );
+      if (!document.hidden) {
+        playVideo();
+      }
 
-    //===========================================================
-    // タブ復帰
-    //===========================================================
-    document.addEventListener(
-      "visibilitychange",
-      () => {
+    });
 
-        if (!document.hidden) {
+  });
 
-          startVideo();
+});
 
-        }
+//===============================================================
+// iPhone Safari autoplay 完全対策
+//===============================================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  const videos = document.querySelectorAll("#mainimg video");
+
+  videos.forEach(video => {
+
+    // Safari用
+    video.muted = true;
+    video.defaultMuted = true;
+
+    video.playsInline = true;
+
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+
+    // 強制ロード
+    video.load();
+
+    // 再生
+    const playVideo = () => {
+
+      const promise = video.play();
+
+      if (promise !== undefined) {
+
+        promise
+          .then(() => {
+            console.log("Autoplay success");
+          })
+          .catch(() => {
+            console.log("Autoplay blocked");
+          });
 
       }
+
+    };
+
+    // 初回再生
+    playVideo();
+
+    // iPhone用保険
+    document.addEventListener(
+      "touchstart",
+      playVideo,
+      { once: true }
     );
 
-  }, 300);
-
-});
-
-
-//===============================================================
-// Loading
-//===============================================================
-window.addEventListener("load", () => {
-
-  setTimeout(() => {
-
-    const loading =
-      document.getElementById("loading");
-
-    if (loading) {
-
-      loading.classList.add("hide");
-
-    }
-
-  }, 2500);
-
-});
-
-
-//===============================================================
-// resize時 動画切替
-//===============================================================
-window.addEventListener("resize", () => {
-
-  clearTimeout(window.__videoResizeTimer);
-
-  window.__videoResizeTimer =
-    setTimeout(() => {
-
-      location.reload();
-
-    }, 300);
+  });
 
 });
