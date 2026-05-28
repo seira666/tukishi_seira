@@ -1,5 +1,5 @@
 //===============================================================
-// Masonry + Fancybox + 動画ホバー処理（iPhone完全安定版）
+// Masonry + Fancybox
 //===============================================================
 $(function () {
 
@@ -7,29 +7,35 @@ $(function () {
 
   if ($grid.length) {
 
+    //===========================================================
     // タッチ端末判定
+    //===========================================================
     const isTouchDevice =
       ('ontouchstart' in window) ||
       (navigator.maxTouchPoints > 0);
 
-    // ============================================================
-    // PCのみ hover 動画再生
-    // ============================================================
+    //===========================================================
+    // PCのみ hover動画再生
+    //===========================================================
     if (!isTouchDevice) {
 
       $grid.on('mouseenter', '.is-video video', function () {
+
         this.play();
+
       });
 
       $grid.on('mouseleave', '.is-video video', function () {
+
         this.pause();
+
       });
 
     }
 
-    // ============================================================
-    // Masonry初期化
-    // ============================================================
+    //===========================================================
+    // Masonry
+    //===========================================================
     $grid.imagesLoaded(function () {
 
       $grid.masonry({
@@ -41,16 +47,18 @@ $(function () {
 
     });
 
-    // ============================================================
-    // レイアウト更新
-    // ============================================================
+    //===========================================================
+    // layout更新
+    //===========================================================
     $grid.imagesLoaded().progress(function () {
+
       $grid.masonry('layout');
+
     });
 
-    // ============================================================
+    //===========================================================
     // Fancybox
-    // ============================================================
+    //===========================================================
     $('[data-fancybox]').fancybox({
       loop: true,
       smallBtn: true,
@@ -63,54 +71,63 @@ $(function () {
 
 
 //===============================================================
-// iPhone Safari 背景動画 autoplay 完全対策
+// 背景動画 autoplay 完全版
+// PC / iPhone / Safari / Chrome 対応
 //===============================================================
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
 
-  // 背景動画のみ対象
-  const videos = document.querySelectorAll("#mainimg video");
+  const videos =
+    document.querySelectorAll("#mainimg video");
 
   if (!videos.length) return;
 
   videos.forEach(video => {
 
-    // =========================================
-    // iPhone Safari 必須設定
-    // =========================================
+    //===========================================================
+    // 強制属性
+    //===========================================================
     video.muted = true;
     video.defaultMuted = true;
+
     video.autoplay = true;
     video.loop = true;
+
     video.playsInline = true;
 
-    // 属性強制付与
     video.setAttribute("muted", "");
     video.setAttribute("autoplay", "");
     video.setAttribute("loop", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
 
+    //===========================================================
+    // preload
+    //===========================================================
+    video.preload = "auto";
+
+    //===========================================================
     // 読み込み
+    //===========================================================
     video.load();
 
-    // =========================================
-    // 再生処理
-    // =========================================
-    const playVideo = () => {
+    //===========================================================
+    // 再生関数
+    //===========================================================
+    const startVideo = () => {
 
-      const promise = video.play();
+      const playPromise = video.play();
 
-      if (promise !== undefined) {
+      if (playPromise !== undefined) {
 
-        promise
+        playPromise
           .then(() => {
 
-            console.log("Background video autoplay OK");
+            console.log("VIDEO PLAY OK");
 
           })
-          .catch(() => {
+          .catch(error => {
 
-            console.log("Autoplay blocked");
+            console.log("VIDEO PLAY BLOCKED", error);
 
           });
 
@@ -118,92 +135,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
+    //===========================================================
     // 初回再生
-    playVideo();
+    //===========================================================
+    startVideo();
 
-    // iPhoneで停止した時の復帰
-    document.addEventListener("touchstart", playVideo, { passive: true });
-
-    // Safariが裏復帰した時
-    document.addEventListener("visibilitychange", () => {
-
-      if (!document.hidden) {
-        playVideo();
-      }
-
-    });
-
-  });
-
-});
-
-//===============================================================
-// iPhone Safari autoplay 完全対策
-//===============================================================
-document.addEventListener("DOMContentLoaded", () => {
-
-  const videos = document.querySelectorAll("#mainimg video");
-
-  videos.forEach(video => {
-
-    // Safari用
-    video.muted = true;
-    video.defaultMuted = true;
-
-    video.playsInline = true;
-
-    video.setAttribute("muted", "");
-    video.setAttribute("autoplay", "");
-    video.setAttribute("playsinline", "");
-    video.setAttribute("webkit-playsinline", "");
-
-    // 強制ロード
-    video.load();
-
-    // 再生
-    const playVideo = () => {
-
-      const promise = video.play();
-
-      if (promise !== undefined) {
-
-        promise
-          .then(() => {
-            console.log("Autoplay success");
-          })
-          .catch(() => {
-            console.log("Autoplay blocked");
-          });
-
-      }
-
-    };
-
-    // 初回再生
-    playVideo();
-
-    // iPhone用保険
+    //===========================================================
+    // iPhoneタップ後再生
+    //===========================================================
     document.addEventListener(
       "touchstart",
-      playVideo,
-      { once: true }
+      startVideo,
+      { passive:true }
+    );
+
+    //===========================================================
+    // PCクリック後再生
+    //===========================================================
+    document.addEventListener(
+      "click",
+      startVideo
+    );
+
+    //===========================================================
+    // タブ復帰
+    //===========================================================
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+
+        if (!document.hidden) {
+
+          startVideo();
+
+        }
+
+      }
     );
 
   });
 
 });
 
-/* =========================================
-   Loading
-========================================= */
 
+//===============================================================
+// Loading
+//===============================================================
 window.addEventListener("load", () => {
-
-  const loading = document.getElementById("loading");
 
   setTimeout(() => {
 
-    loading.classList.add("hide");
+    const loading =
+      document.getElementById("loading");
+
+    if (loading) {
+
+      loading.classList.add("hide");
+
+    }
 
   }, 3200);
 

@@ -1,84 +1,333 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
-<title>月汐　星羅🧸𖤐⡱　色を探す旅〜　紹介ブログ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="お知らせ">
+
+<title>
+月汐 星羅🧸𖤐⡱ 色を探す旅〜 お知らせ
+</title>
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1">
+
+<meta
+name="description"
+content="お知らせ">
+
 <link rel="stylesheet" href="css/style.css">
-</head>
 
 <style>
 
-/* 背景固定用 */
-body::before{
+/* ======================================
+   背景固定
+====================================== */
+
+body#new{
+  position:relative;
+  background:none;
+  overflow-x:hidden;
+}
+
+body#new::before{
   content:"";
+
   position:fixed;
   inset:0;
 
-  background:url('images/game_start.png') center center / cover no-repeat;
+  background:
+    url("images/game_start.png")
+    center center / cover no-repeat;
 
-  z-index:-1;
+  z-index:-10;
 
   transform:translateZ(0);
   -webkit-transform:translateZ(0);
 }
 
-/* body */
-body{
-  margin:0;
+/* ======================================
+   main
+====================================== */
+
+main{
   position:relative;
-  background:none;
+  z-index:1000;
+
+  padding:
+    120px
+    40px
+    80px
+    140px;
 }
 
-/* ダミー */
-.content{
-  height:2000px;
-  color:#fff;
-  padding:50px;
+/* ======================================
+   box
+====================================== */
+
+.box1{
+  max-width:900px;
+
+  margin:auto;
+
+  padding:35px;
+
+  border-radius:24px;
+
+  background:
+    rgba(0,0,0,0.45);
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.35);
+}
+
+/* ======================================
+   title
+====================================== */
+
+.news-title{
+  margin:0 0 28px;
+
+  font-size:34px;
+  font-weight:bold;
+
+  color:#e6e6fa;
+
+  text-align:center;
+
+  letter-spacing:0.08em;
 
   text-shadow:
-    2px 2px 4px rgba(0,0,0,0.5);
+    0 0 10px rgba(255,255,255,0.3),
+    0 0 25px rgba(180,200,255,0.25);
 }
 
-</style> 
+/* ======================================
+   news list
+====================================== */
 
+.news-list{
+  display:flex;
+  flex-direction:column;
+
+  gap:18px;
+}
+
+.news-item{
+  display:flex;
+  align-items:center;
+
+  gap:22px;
+
+  padding:18px 22px;
+
+  border-radius:18px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  transition:0.3s;
+}
+
+.news-item:hover{
+  transform:translateY(-3px);
+
+  background:
+    rgba(255,255,255,0.12);
+}
+
+/* 日付 */
+
+.news-date{
+  min-width:120px;
+
+  font-size:14px;
+
+  color:#b7dfff;
+
+  font-weight:bold;
+}
+
+/* 内容 */
+
+.news-text{
+  flex:1;
+
+  font-size:16px;
+}
+
+/* ======================================
+   SNS
+====================================== */
+
+.icons{
+  position:fixed;
+
+  top:20px;
+  right:20px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+
+  z-index:999999;
+}
+
+.icons a{
+  color:#fff;
+
+  font-size:24px;
+
+  transition:0.25s;
+
+  text-shadow:
+    0 0 10px rgba(0,0,0,0.7);
+}
+
+.icons a:hover{
+  transform:scale(1.1);
+}
+
+/* ======================================
+   footer
+====================================== */
+
+footer small{
+  position:fixed;
+
+  right:10px;
+  bottom:10px;
+
+  z-index:99999;
+
+  opacity:0.75;
+}
+
+/* ======================================
+   SP
+====================================== */
+
+@media screen and (max-width:600px){
+
+  main{
+    padding:
+      100px
+      16px
+      70px;
+  }
+
+  .box1{
+    padding:22px;
+    border-radius:18px;
+  }
+
+  .news-title{
+    font-size:24px;
+  }
+
+  .news-item{
+    flex-direction:column;
+    align-items:flex-start;
+
+    gap:8px;
+
+    padding:16px;
+  }
+
+  .news-date{
+    min-width:auto;
+    font-size:13px;
+  }
+
+  .news-text{
+    font-size:14px;
+  }
+
+  .icons{
+    top:85px;
+    right:12px;
+  }
+
+}
+
+</style>
+
+</head>
 
 <body id="new">
 
 <div id="container">
 
+<!-- ======================================
+     Header
+====================================== -->
+
 <header>
 
-<h1 id="logo"><a href="index.html"><img src="images/ロゴ月汐星羅.png" alt="あなたのサイト名"></a></h1>
+<h1 id="logo">
+
+<a href="index.html">
+
+<img
+src="images/ロゴ月汐星羅.png"
+alt="月汐 星羅">
+
+</a>
+
+</h1>
 
 <nav>
+
 <ul>
 
 <li>
+
 <a href="index.html">
+
 <i class="fa-solid fa-house"></i>
+
 <span>HOME</span>
+
 </a>
+
 </li>
 
 <li>
+
 <a href="profile.html">
+
 <i class="fa-solid fa-user"></i>
+
 <span>PROFILE</span>
+
 </a>
+
 </li>
 
 <li>
+
 <a href="portfolio.html">
+
 <i class="fa-solid fa-palette"></i>
+
 <span>PORTFOLIO</span>
+
 </a>
+
 </li>
 
 </ul>
+
 </nav>
+
 </header>
+
+<!-- ======================================
+     Main
+====================================== -->
 
 <main>
 
@@ -86,56 +335,211 @@ body{
 
 <div class="box1">
 
-<h2><dd style="color: #e6e6fa;"><dd style="color: #e6e6fa;">お知らせ<dd style="</dd></h2>
+<h2 class="news-title">
 
-<dl class="new">
-<dt>2026/08/16</dt>
-<dd>Youtube 始動✨</dd>
-<dt>20XX/00/00</dt>
-<dd>Next...</dd>
-<dt>20XX/00/00</dt>
-<dd>Next...</dd>
-<dt>20XX/00/00</dt>
-<dd>Next...</dd>
-<dt>20XX/00/00</dt>
-<dd>Next...</dd>
+お知らせ
 
-</dl>
+</h2>
+
+<div class="news-list">
+
+<div class="news-item">
+
+<div class="news-date">
+
+2026 / 08 / 16
+
 </div>
+
+<div class="news-text">
+
+YouTube 始動✨
+
+</div>
+
+</div>
+
+<div class="news-item">
+
+<div class="news-date">
+
+20XX / 00 / 00
+
+</div>
+
+<div class="news-text">
+
+Next...
+
+</div>
+
+</div>
+
+<div class="news-item">
+
+<div class="news-date">
+
+20XX / 00 / 00
+
+</div>
+
+<div class="news-text">
+
+Next...
+
+</div>
+
+</div>
+
+<div class="news-item">
+
+<div class="news-date">
+
+20XX / 00 / 00
+
+</div>
+
+<div class="news-text">
+
+Next...
+
+</div>
+
+</div>
+
+<div class="news-item">
+
+<div class="news-date">
+
+20XX / 00 / 00
+
+</div>
+
+<div class="news-text">
+
+Next...
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 </main>
 
+<!-- ======================================
+     SNS
+====================================== -->
+
 <ul class="icons">
-    <li><a href="https://x.com/tukishi_seira?s=21&t=Y4o8jz4G-Ofc76n5fOjSOg"> <i class="fa-brands fa-x-twitter"></i></a></li>
-    <li><a href="http://www.youtube.com/@nyam.tukishi_seira"><i class="fab fa-youtube"></i></a></li>
-    <li><a href="https://www.instagram.com/nyam.tukishi_seira/"><i class="fab fa-instagram"></i></a></li>
+
+<li>
+
+<a
+href="https://x.com/tukishi_seira?s=21&t=Y4o8jz4G-Ofc76n5fOjSOg"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fa-brands fa-x-twitter"></i>
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://www.youtube.com/@nyam.tukishi_seira"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fab fa-youtube"></i>
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://www.instagram.com/nyam.tukishi_seira/"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+</li>
+
 </ul>
 
+<!-- ======================================
+     Footer
+====================================== -->
+
 <footer>
-<small>Copyright© Tukishi_seira Site</small>
+
+<small>
+
+Copyright© Tukishi_seira Site
+
+</small>
+
 </footer>
 
-<!--以下の行はテンプレートの著作。削除しないで下さい。-->
-<span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+<!-- template-party -->
+
+<span class="pr">
+
+<a
+href="https://template-party.com/"
+target="_blank">
+
+《Web Design:Template-Party》
+
+</a>
+
+</span>
 
 </div>
-<!--/#container-->
 
-<!--ページの上部へ戻るボタン-->
-<div class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
+<!-- pagetop -->
 
-<!--jQueryの読み込み-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<div class="pagetop">
 
-<!-- Masonry & imagesLoaded -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
+<a href="#">
 
-<!-- Fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<i class="fas fa-angle-double-up"></i>
 
-<!--このテンプレート専用のスクリプト-->
+</a>
+
+</div>
+
+<!-- ======================================
+     Scripts
+====================================== -->
+
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+</script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js">
+</script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js">
+</script>
+
+<script
+src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js">
+</script>
+
 <script src="js/main.js"></script>
 
 </body>

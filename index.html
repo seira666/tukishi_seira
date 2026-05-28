@@ -1,46 +1,105 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
 <meta charset="UTF-8">
-<title>月汐　星羅🧸𖤐⡱　色を探す旅〜　紹介ブログ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="星羅の活動報告サイト🍀*.">
+
+<title>
+月汐　星羅🧸𖤐⡱　色を探す旅〜　紹介ブログ
+</title>
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1">
+
+<meta
+name="description"
+content="星羅の活動報告サイト🍀*.">
+
 <link rel="stylesheet" href="css/style.css">
-</head>
+
 <style>
 
 /* ======================================
-   クリック不能 完全修正
+   クリック不能 修正
 ====================================== */
 
-/* 動画を完全背面 */
 #mainimg,
 #mainimg video{
   pointer-events:none !important;
-  z-index:-9999 !important;
 }
 
-/* ページトップボタン無効化 */
+#mainimg{
+  position:fixed;
+  inset:0;
+
+  width:100%;
+  height:100vh;
+
+  overflow:hidden;
+
+  z-index:-9999 !important;
+
+  background:#000;
+}
+
+#mainimg video{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+/* PC/SP */
+
+.video-pc{
+  display:block;
+}
+
+.video-sp{
+  display:none;
+}
+
+@media screen and (max-width:600px){
+
+  .video-pc{
+    display:none;
+  }
+
+  .video-sp{
+    display:block;
+  }
+
+}
+
+/* pagetop */
+
 .pagetop{
   pointer-events:none !important;
 }
 
-/* template-partyの著作表示を背面 */
-.pr{
-  position:relative;
-  z-index:1 !important;
-}
+/* main */
 
-/* メイン前面化 */
 main{
   position:relative;
   z-index:99999 !important;
 }
 
 /* SNS */
+
 .icons{
   position:fixed !important;
+
+  top:20px;
+  right:20px;
+
   z-index:999999 !important;
+
   pointer-events:auto !important;
 }
 
@@ -50,10 +109,13 @@ main{
   pointer-events:auto !important;
 }
 
-/* お知らせ */
+/* More */
+
 .new-top{
   position:fixed !important;
+
   z-index:999999 !important;
+
   pointer-events:auto !important;
 }
 
@@ -61,142 +123,501 @@ main{
   pointer-events:auto !important;
 }
 
-/* Moreボタン */
 .new-top .more a{
   display:inline-block !important;
-  position:relative !important;
-  z-index:999999 !important;
 }
 
 /* header */
+
 header{
   z-index:999999 !important;
 }
 
+/* ======================================
+   Loading
+====================================== */
+
+#loading{
+  position:fixed;
+  inset:0;
+
+  width:100%;
+  height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  background:#000;
+
+  z-index:99999999;
+
+  transition:
+    opacity 1.5s ease,
+    visibility 1.5s ease;
+}
+
+/* 背景 */
+
+.loading-bg{
+  position:absolute;
+  inset:0;
+
+  background:
+    url("images/loading_bg.png")
+    center center / cover no-repeat;
+
+  animation:
+    loadingZoom 8s ease forwards;
+}
+
+/* ロゴ */
+
+.loading-logo{
+  position:relative;
+
+  z-index:10;
+
+  opacity:0;
+
+  transform:
+    translateY(20px)
+    scale(0.95);
+
+  animation:
+    logoFade 2.5s ease forwards;
+}
+
+.loading-logo img{
+  width:min(420px,75vw);
+
+  filter:
+    drop-shadow(0 0 25px rgba(255,255,255,0.6))
+    drop-shadow(0 0 60px rgba(180,220,255,0.4));
+}
+
+/* 消える */
+
+#loading.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* ロゴ演出 */
+
+@keyframes logoFade{
+
+  0%{
+    opacity:0;
+
+    transform:
+      translateY(30px)
+      scale(0.9);
+  }
+
+  40%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+/* 背景ズーム */
+
+@keyframes loadingZoom{
+
+  0%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+/* スマホ */
+
+@media screen and (max-width:600px){
+
+  .loading-logo img{
+    width:78vw;
+  }
+
+  .icons{
+    top:85px !important;
+    right:12px !important;
+  }
+
+}
+
 </style>
+
+</head>
+
 <body class="home">
 
-<!-- ローディング -->
+<!-- ======================================
+     Loading
+====================================== -->
+
 <div id="loading">
 
   <div class="loading-bg"></div>
 
   <div class="loading-logo">
-    <img src="images/ロゴ月汐星羅.png" alt="Loading">
+
+    <img
+    src="images/ロゴ月汐星羅.png"
+    alt="Loading">
+
   </div>
 
 </div>
+
+<!-- ======================================
+     Container
+====================================== -->
+
 <div id="container">
+
+<!-- ======================================
+     Header
+====================================== -->
+
 <header>
 
-<h1 id="logo"><a href="index.html"><img src="images/ロゴ月汐星羅.png" alt="星羅の色を探す旅🍀*."></a></h1>
+<h1 id="logo">
+
+<a href="index.html">
+
+<img
+src="images/ロゴ月汐星羅.png"
+alt="星羅の色を探す旅🍀*.">
+
+</a>
+
+</h1>
+
 <nav>
+
 <ul>
 
 <li>
+
 <a href="index.html">
+
 <i class="fa-solid fa-house"></i>
+
 <span>HOME</span>
+
 </a>
+
 </li>
 
 <li>
+
 <a href="profile.html">
+
 <i class="fa-solid fa-user"></i>
+
 <span>PROFILE</span>
+
 </a>
+
 </li>
 
 <li>
+
 <a href="portfolio.html">
+
 <i class="fa-solid fa-palette"></i>
+
 <span>PORTFOLIO</span>
+
 </a>
+
 </li>
 
 </ul>
+
 </nav>
+
 </header>
+
+<!-- ======================================
+     Main
+====================================== -->
 
 <main>
 
+<!-- SNS -->
+
 <ul class="icons">
-    <li><a href="https://x.com/tukishi_seira?s=21&t=Y4o8jz4G-Ofc76n5fOjSOg"> <i class="fa-brands fa-x-twitter"></i></a></li>
-    <li><a href="http://www.youtube.com/@nyam.tukishi_seira"><i class="fab fa-youtube"></i></a></li>
-    <li><a href="https://www.instagram.com/nyam.tukishi_seira/"><i class="fab fa-instagram"></i></a></li>
+
+<li>
+
+<a
+href="https://x.com/tukishi_seira?s=21&t=Y4o8jz4G-Ofc76n5fOjSOg"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fa-brands fa-x-twitter"></i>
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://www.youtube.com/@nyam.tukishi_seira"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fab fa-youtube"></i>
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://www.instagram.com/nyam.tukishi_seira/"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+</li>
+
 </ul>
 
+<!-- お知らせ -->
 
 <div class="new-top">
-<p class="text">YouTube始動！星羅の色探しの旅へ〜</p>
-<p class="more"><a href="new.html">More</a></p>
+
+<p class="text">
+
+YouTube始動！星羅の色探しの旅へ〜
+
+</p>
+
+<p class="more">
+
+<a href="new.html">
+
+More
+
+</a>
+
+</p>
+
 </div>
 
 </main>
 
-<!--動画-->
+<!-- ======================================
+     背景動画
+====================================== -->
+
 <aside id="mainimg" aria-hidden="true">
-  <!-- PC -->
-  <video
-    class="video-pc"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    preload="auto"
-    poster="images/YouTube用背景_くま部屋.jpeg">
 
-    <source src="images/chibiseira_pc.mp4" type="video/mp4">
+<!-- PC動画 -->
 
-  </video>
+<video
+id="bg-video-pc"
+class="video-pc"
+autoplay
+muted
+loop
+playsinline
+webkit-playsinline
+preload="auto"
+poster="images/YouTube用背景_くま部屋.jpeg">
 
-  <!-- SP -->
-  <video
-    class="video-sp"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    preload="auto"
-    poster="images/YouTube用背景_くま部屋.jpeg">
+<source
+src="./images/chibiseira_pc.mp4"
+type="video/mp4">
 
-    <source src="images/chibiseira_sp.mp4" type="video/mp4">
-  </video>
+</video>
+
+<!-- スマホ動画 -->
+
+<video
+id="bg-video-sp"
+class="video-sp"
+autoplay
+muted
+loop
+playsinline
+webkit-playsinline
+preload="auto"
+poster="images/YouTube用背景_くま部屋.jpeg">
+
+<source
+src="./images/chibiseira_sp.mp4"
+type="video/mp4">
+
+</video>
+
 </aside>
 
+<!-- ======================================
+     Footer
+====================================== -->
+
 <footer>
-<small>Copyright© Tukishi_seira Site</small>
+
+<small>
+
+Copyright© Tukishi_seira Site
+
+</small>
+
 </footer>
 
-<!--以下の行はテンプレートの著作。削除しないで下さい。-->
-<span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+<!-- template-party -->
 
-<!--ページの上部へ戻るボタン-->
-<div class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
+<span class="pr">
 
-<!--jQueryの読み込み-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<a
+href="https://template-party.com/"
+target="_blank">
 
-<!-- Masonry & imagesLoaded -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
+《Web Design:Template-Party》
 
-<!-- Fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+</a>
 
-<!--このテンプレート専用のスクリプト-->
+</span>
+
+<!-- pagetop -->
+
+<div class="pagetop">
+
+<a href="#">
+
+<i class="fas fa-angle-double-up"></i>
+
+</a>
+
+</div>
+
+<!-- ======================================
+     Scripts
+====================================== -->
+
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+</script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js">
+</script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js">
+</script>
+
+<script
+src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js">
+</script>
+
 <script src="js/main.js"></script>
-<script src="js/js:loading.js"></script>
+
+<!-- ======================================
+     Loading
+====================================== -->
 
 <script>
-window.addEventListener('load', () => {
+
+window.addEventListener("load", () => {
+
   setTimeout(() => {
-    document.getElementById('loading').style.display = 'none';
+
+    const loading =
+      document.getElementById("loading");
+
+    loading.classList.add("hide");
+
   }, 3200);
+
 });
+
+</script>
+
+<!-- ======================================
+     背景動画 自動再生
+====================================== -->
+
+<script>
+
+window.addEventListener("load", () => {
+
+  const videos =
+    document.querySelectorAll("#mainimg video");
+
+  videos.forEach(video => {
+
+    video.muted = true;
+
+    const playPromise = video.play();
+
+    if(playPromise !== undefined){
+
+      playPromise.catch(() => {
+
+        const startVideo = () => {
+
+          video.play();
+
+          document.removeEventListener(
+            "touchstart",
+            startVideo
+          );
+
+          document.removeEventListener(
+            "click",
+            startVideo
+          );
+
+        };
+
+        document.addEventListener(
+          "touchstart",
+          startVideo,
+          { once:true }
+        );
+
+        document.addEventListener(
+          "click",
+          startVideo,
+          { once:true }
+        );
+
+      });
+
+    }
+
+  });
+
+});
+
 </script>
 
 </body>
 </html>
+```

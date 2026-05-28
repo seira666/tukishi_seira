@@ -1,114 +1,150 @@
+/* ======================================
+   背景動画 完全版
+   PC / iPhone Safari対応
+====================================== */
+
 @charset "utf-8";
 
 /* ======================================
-   背景動画
+   背景動画エリア
 ====================================== */
-#mainimg {
-  position: fixed;
-  inset: 0;
 
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
+#mainimg{
+  position:fixed;
+  inset:0;
 
-  overflow: hidden;
-  z-index: -1;
+  width:100%;
+  height:100vh;
+  height:100dvh;
 
-  /* Safari対策 */
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
+  overflow:hidden;
 
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  z-index:-9999 !important;
 
-  will-change: transform;
+  background:#000;
+
+  pointer-events:none !important;
+
+  /* Safari GPU */
+  transform:translate3d(0,0,0);
+  -webkit-transform:translate3d(0,0,0);
+
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+
+  will-change:transform;
 }
 
-/* 前面 */
+/* ======================================
+   前面
+====================================== */
+
 header,
 main,
 footer,
 .new-top,
-.icons {
-  position: relative;
-  z-index: 10;
+.icons{
+  position:relative;
+  z-index:1000;
 }
 
 /* ======================================
    動画共通
 ====================================== */
-#mainimg video {
-  position: absolute;
-  inset: 0;
 
-  width: 100%;
-  height: 100%;
+#mainimg video{
+  position:absolute;
+  inset:0;
 
-  object-fit: cover;
-  object-position: center center;
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center center;
+
+  background:#000;
+
+  pointer-events:none !important;
 
   /* Safari対策 */
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
+  transform:translate3d(0,0,0);
+  -webkit-transform:translate3d(0,0,0);
 
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 
-  will-change: transform;
+  will-change:transform;
 
-  pointer-events: none;
+  z-index:-1;
 }
 
-/* PC動画 */
-#mainimg .video-pc {
-  display: block;
+/* ======================================
+   PC動画
+====================================== */
+
+#mainimg .video-pc{
+  display:block !important;
 }
 
-#mainimg .video-sp {
-  display: none;
+/* ======================================
+   SP動画
+====================================== */
+
+#mainimg .video-sp{
+  display:none !important;
 }
 
 /* ======================================
    スマホ
 ====================================== */
+
 @media screen and (max-width:600px){
 
-  #mainimg {
-    position: fixed;
-    inset: 0;
-
-    width: 100vw;
-    height: 100vh;
-    height: 100svh;
-
-    overflow: hidden;
-  }
-
-  #mainimg .video-pc {
-    display: none;
-  }
-
-  #mainimg .video-sp {
-    display: block;
-  }
-
-  #mainimg video {
-    width: 100vw;
-    height: 100vh;
-    height: 100svh;
-
-    object-fit: cover;
-    object-position: center center;
-  }
-
   html,
-  body {
-    overflow-x: hidden;
-    width: 100%;
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  #mainimg{
+    width:100vw;
+    height:100vh;
+    height:100dvh;
+  }
+
+  #mainimg video{
+    width:100vw;
+    height:100vh;
+    height:100dvh;
+  }
+
+  /* PC動画非表示 */
+
+  #mainimg .video-pc{
+    display:none !important;
+  }
+
+  /* SP動画表示 */
+
+  #mainimg .video-sp{
+    display:block !important;
   }
 
 }
 
-#mainimg{
-  z-index:-10;
+/* ======================================
+   PC Chrome 動画停止対策
+====================================== */
+
+video{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+/* ======================================
+   iPhone Safari autoplay対策
+====================================== */
+
+#mainimg video::-webkit-media-controls{
+  display:none !important;
 }
